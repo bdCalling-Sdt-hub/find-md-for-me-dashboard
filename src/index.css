@@ -1,0 +1,115 @@
+/* @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap'); */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: "Montserrat", sans-serif;
+}
+    
+
+
+h1, h2, h3, h4, h5, h6, tr, td, th, span, p, li, ul{
+    padding: 0;
+    margin: 0;
+}
+
+/* otp input box style css */
+.ant-input-outlined{
+    width: 56px;
+    height: 49px;
+    border-radius: 8px;
+}
+
+/* sweat alert custom button style css */
+.custom-send-button {
+    background-color: #4FB697 !important; /* Green */
+    border: none;
+    outline: none;
+    width: 121px;
+    height: 48px;
+    border-radius: 8px !important;
+    color: white;
+    box-shadow: none !important;
+    font-family: Roboto;
+}
+
+/* custom style css for ant design side menu */
+.ant-menu-light.ant-menu-root.ant-menu-inline{
+    border-inline-end: none !important;
+}
+
+/* sidemenu selected style css */
+.ant-menu-light .ant-menu-item-selected{
+    background: #1D75F2 !important;
+    color: white !important;
+}
+
+/* ant design modal remove padding */
+.ant-modal-content{
+    padding: 8px !important;
+}
+
+/* select item color */
+.ant-select-selection-item{
+    color: #6A6A6A !important;
+}
+
+.ant-select-selector{
+    border: none !important;
+}
+
+
+/* ant design pagition custom css start here */
+
+.ant-pagination .ant-pagination-item-active{
+    font-weight: 600;
+    background-color: #6C6C6C !important;
+    border: none !important;
+    border-color: none !important;
+}
+
+
+.ant-pagination .ant-pagination-item-active a{
+    color: #FFFFFF !important;
+}
+
+/* sub menu item color css  */
+.ant-menu-submenu-title{
+    color: #415D71 !important;
+}
+
+.ant-menu-light{
+    background: transparent;
+}
+
+
+/* Table border */
+
+
+
+.custom-table .ant-table-tbody > tr > td {
+    text-align: left;
+    
+}
+.ant-table-wrapper .ant-table-thead >tr>th{
+    background: #E5E5E5 !important; 
+    border-radius:0px !important;
+    
+}
+
+.ant-table-wrapper .ant-table-tbody >tr >td {
+    border:0px !important;
+}
+
+.ant-modal .ant-modal-content{
+    background: #E8F6FE;
+}
+
+.jodit-workplace {
+    height: 400px !important;
+  }
+
+  table-pagination.ant-pagination {
+     margin: 0px 0 !important;
+  }
