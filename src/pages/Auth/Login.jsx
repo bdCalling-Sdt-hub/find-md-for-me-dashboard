@@ -33,7 +33,7 @@ const Login = () => {
         const userType = result.data.user_type;
         
   
-        if (userType === "ADMIN") {
+        if (userType === "ADMIN" || userType === "SUPER ADMIN") {
           navigate("/");
         } else {
           Swal.fire("Unauthorized", "You are not authorized to access the admin dashboard.", "error");

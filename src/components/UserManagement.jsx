@@ -6,6 +6,7 @@ import { MdOutlineRemoveRedEye, MdOutlineCancel } from "react-icons/md";
 import { FcApproval } from "react-icons/fc";
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
+import { IMAGE_URL } from '../main';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]); 
@@ -21,7 +22,7 @@ const UserManagement = () => {
     }); 
     
     const [search, setSearch] = useState('');
-    const baseUrl = 'http://192.168.10.201:3000';
+   
    
 
     useEffect(() => {
@@ -52,7 +53,7 @@ const UserManagement = () => {
             }
             const result = await response.json();
             setUsers(result.data);
-            // console.log('User data:', result.data);
+             console.log('hello :', result.data);
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -83,8 +84,7 @@ const UserManagement = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
-            setTier(result?.data);
-            console.log('User data:', result?.data);
+            setTier(result?.data);            
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -174,7 +174,7 @@ const UserManagement = () => {
 
     const updateProfileAccept = async (id) => {
 
-        console.log(id);
+        // console.log(id);
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
             message.error('Unauthorized user');
@@ -223,50 +223,49 @@ const UserManagement = () => {
             // const client_type =  value?.business_data?.client_type 
             // const id = value?.business_data?.id 
             // console.log(id,tier_service_interrested,client_type)
-        // const id = selectedUser?.business_data?.id;
+       // const id = selectedUser?.business_data?.id;
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
             message.error('Unauthorized user');
             return;
         }
 
-        // try {
-        //     const response = await fetch(`${BASE_URL}client-type-update/${id}`, {
-        //         method: 'POST',
-        //         headers: {
-        //             'Content-Type': 'application/json',
-        //             'Accept': 'application/json',
-        //             'Authorization': `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify({
-        //             tier_service_interrested ,
-        //             client_type
-        //         }),
-        //     }); 
+        try {
+            const response = await fetch(`${BASE_URL}client-type-update/${id}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+                body: JSON.stringify(
+                    value
+                ),
+            }); 
 
         
 
-        //     if (!response.ok) {
-        //         throw new Error('Failed to update user status');
-        //     }
+            if (!response.ok) {
+                throw new Error('Failed to update user status');
+            }
 
-        //     Swal.fire({
-        //         icon: 'success',
-        //         title: 'Success',
-        //         text: 'Update profile successfully',
-        //     });
+            Swal.fire({
+                icon: 'success',
+                title: 'Success',
+                text: 'Update profile successfully',
+            });
 
-        //     fetchUserManagement();
-        //     handleClientCancel();
-        // } catch (error) {
-        //     console.error('Error updating user status:', error);
-        //     Swal.fire({
-        //         icon: 'error',
-        //         title: 'Error',
-        //         text: 'Failed to update document status',
-        //     });
-        //     handleClientCancel();
-        // }
+            fetchUserManagement();
+            handleClientCancel();
+        } catch (error) {
+            console.error('Error updating user status:', error);
+            Swal.fire({
+                icon: 'error',
+                title: 'Error',
+                text: 'Failed to update document status',
+            });
+            handleClientCancel();
+        }
     };
 
     const handleApprove = (userId) => updateStatus(userId, 'active');
@@ -363,7 +362,7 @@ const UserManagement = () => {
             key: 'name',
             render: (text, record) => (
                 <div className='flex gap-2'>                  
-                    <img className='w-8' src={baseUrl + record?.user?.image || "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"} />
+                    {/* <img className='w-8' src={IMAGE_URL + record?.user?.image || "https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg"} /> */}
                     <h1>{`${record?.user?.first_name} ${record?.user?.last_name}`}</h1>
                 </div>
             ),
@@ -428,7 +427,7 @@ const UserManagement = () => {
 
                         <div className=" sm:mx-auto sm:w-full sm:max-w-sm ">
                             <p className='text-2xl font-medium text-black text-center'>Update client type</p>
-                            <Form style={{ marginTop: '30px' }}  onFinish={()=>updateClientType(selectedUser?.business_data?.id,besinessData)}>
+                            <Form style={{ marginTop: '30px' }}  >
                                 <Select
                                     name='tier_service_interrested'
                                     placeholder="Select tier name"
@@ -439,9 +438,12 @@ const UserManagement = () => {
                                         marginBottom: '10px',
                                     }}
                                     onChange={(e)=>{
-                                        setBesinessData({...setBesinessData, tier_service_interrested : e?.value})
+                                        // console.log(e)
+                                        setBesinessData(pre=>{
+                                        return {...pre, client_type : e}
+                                        })
                                     }}
-                                    tokenSeparators={[',']}
+                                    // tokenSeparators={[',']}
                                     options={options}
                                 />
 
@@ -453,15 +455,19 @@ const UserManagement = () => {
                                         width: '100%',
                                         height: '40px',
                                     }}
+                                    
                                     onChange={(e)=>{
-                                        setBesinessData({...setBesinessData, client_type : e?.value})
+                                        // console.log(e)
+                                        setBesinessData(pre=>{
+                                        return {...pre, tier_service_interrested : e}
+                                        })
                                     }}
-                                    tokenSeparators={[',']}
+                                    // tokenSeparators={[',']}
                                     options={options1}
                                 /> 
 
                             <Form.Item className='flex justify-center gap-2 mt-8'>
-                                <Button htmlType='submit' className='px-4 bg-[#C738BD] text-white rounded  hover:border transition hover:border-[#C738BD] hover:bg-transparent hover:text-[#C738BD]'>Update</Button>
+                                <Button htmlType='button' onClick={()=>updateClientType(selectedUser?.business_data?.id,besinessData)} className='px-4 bg-[#C738BD] text-white rounded  hover:border transition hover:border-[#C738BD] hover:bg-transparent hover:text-[#C738BD]'>Update</Button>
                             </Form.Item>
 
 
@@ -513,7 +519,7 @@ const UserManagement = () => {
                                     <div className='text-right'>
                                         {selectedUser?.user?.user_update && (
                                             <>
-                                                {console.log(selectedUser)}
+                                                {/* {console.log(selectedUser)} */}
                                                 <h1 className='mt-3'>{`${selectedUser?.user?.user_update?.first_name} ${selectedUser?.user?.user_update?.last_name || "Empty"}`}</h1>
                                                 <h1 className='mt-3'>{selectedUser?.user?.user_update?.email || "Empty"}</h1>
                                                 <h1 className='mt-3'>{selectedUser?.user?.user_update?.phone || "Empty"}</h1>

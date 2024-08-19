@@ -6,7 +6,8 @@ import { FaEye } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
 import { TbPhotoSquareRounded } from "react-icons/tb";
 import Swal from 'sweetalert2';
-import { BASE_URL } from '../main';
+import { BASE_URL, IMAGE_URL_1 } from '../main';
+
 
 const Team = () => {
     const [form] = Form.useForm();
@@ -17,7 +18,7 @@ const Team = () => {
     const [status, setStatus] = useState('all');
     const [modalData, setModalData] = useState(null);
     const navigate = useNavigate();
-    const baseUrl = 'http://192.168.10.201:3000/storage/';
+   // const baseUrl = 'http://192.168.10.201:3000/storage/';
     const fetchUserData = async () => {
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
@@ -278,7 +279,7 @@ const Team = () => {
                                 </div>
                                 </div>
                                 <div className='mt-5 text-[16px] leading-3 font-normal '>  Please provide your license(s)/certificate(s) number(s) </div>
-                                <a href={`${baseUrl}${modalData.license_certificate_number}`} target='_blank'>
+                                <a href={`${IMAGE_URL_1}${modalData.license_certificate_number}`} target='_blank'>
                                 <div className='w-[100%] h-[44px] bg-white rounded-[10px] p-1 mt-5'>
                                     <div className='items-center flex text-sm text-[#1DA1F2] font-medium leading-5 pl-5'>
                                         <TbPhotoSquareRounded /> HannahBusing_Resume.pdf
@@ -287,7 +288,7 @@ const Team = () => {
                                 </div>
                                 </a>
                                 <div className='mt-5 text-[16px] leading-3 font-normal '>  Upload additional certificates </div>
-                                <a href={`${baseUrl}${modalData.addisional_certificate}`} target='_blank'>
+                                <a href={`${IMAGE_URL_1}${modalData.addisional_certificate}`} target='_blank'>
                                 <div className='w-[100%] h-[44px] bg-white rounded-[10px] p-1 mt-5'>
                                     <div className='items-center flex text-sm text-[#1DA1F2] font-medium leading-5 pl-5'>
                                         <TbPhotoSquareRounded /> HannahBusing_Resume.pdf

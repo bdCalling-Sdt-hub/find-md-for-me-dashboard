@@ -40,12 +40,10 @@ const UserAccountCreate = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
-            setUserData(result.data.map((user, index) => ({
-                key: user.id, // Use user.id as key for better consistency
-                user: `${user.first_name} ${user.last_name}`,
-                email: user.email,
-                id: user.id,
-            })));
+          console.log(result.data);
+            setUserData(result.data);
+               
+            
         } catch (error) {
             console.error('Error fetching user data:', error);
             message.error('Error fetching user data');
@@ -123,14 +121,14 @@ const UserAccountCreate = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Admin added successfully',
+                text: 'Create user successfully ',
             });
             fetchUserData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to add admin',
+                text: 'Failed create user ',
             });
         }
     };
@@ -166,9 +164,7 @@ const UserAccountCreate = () => {
         return <div>Loading...</div>;
     }
 
-    if (!userData.length) {
-        return <div>No user data available</div>;
-    }
+
 
     const columns = [
         {
@@ -180,11 +176,26 @@ const UserAccountCreate = () => {
             title: 'User',
             dataIndex: 'user',
             key: 'user',
+            render(text, item){
+               
+                return(
+                    <div>
+                        {item?.first_name} {item?.last_name}
+                    </div>
+                );
+            }
         },
         {
             title: 'Email',
             dataIndex: 'email',
             key: 'email',
+            render(text, item){
+                return(
+                    <div>
+                        {item?.email}
+                    </div>
+                );
+            }
         },
         {
             title: 'Action',
@@ -211,7 +222,7 @@ const UserAccountCreate = () => {
             <div className="flex justify-between items-center mb-6">
                 <h1 className='text-[#1DA1F2] text-[32px] font-normal p-1 w-full'>User Management Account Creation</h1>
                 <Button onClick={openAddAdminModal} style={{ color: '#666666' }} className='font-normal text-sm text-[#666666]' type="primary" ghost>
-                    + Add Admin
+                    + Add user
                 </Button>
             </div>
             <Row>

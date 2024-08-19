@@ -1,0 +1,11 @@
+droplet-password:lamesha123@LAMESHA
+droplet-ip: 159.65.14.5
+
+mysql username:lamesha
+mysql password:lamesha123
+mysql database:lamesha_db
+
+
+
+
+

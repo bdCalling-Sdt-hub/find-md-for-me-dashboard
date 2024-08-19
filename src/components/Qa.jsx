@@ -39,6 +39,7 @@ const Qa = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
+            console.log(result)
             setUserData(result.data.map((user, index) => ({
                 key: user.id,
                 email: user.email,

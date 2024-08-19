@@ -4,7 +4,7 @@ import { Button, Form, Row, Col, message } from 'antd';
 import { TbPhotoSquareRounded } from "react-icons/tb";
 import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
-import { BASE_URL } from '../main';
+import { BASE_URL, IMAGE_URL_1 } from '../main';
 import { IMAGE_URL } from '../main';
 const ClientDocumentView = () => {
     let { userId } = useParams();
@@ -50,7 +50,7 @@ const ClientDocumentView = () => {
     if (!document) {
         return <div>No user document available</div>;
     }
-    const baseUrl = 'http://192.168.10.201:3000/storage/';
+   
 
     // ******* Update status ********//
 
@@ -122,15 +122,15 @@ const ClientDocumentView = () => {
                 <Row className='m-auto justify-between' >
                     <Col>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  1.Resume </div>
-                        <a href={`${baseUrl}${document?.resume}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.resume}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
-                                <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Resume.pdf </div>
+                                <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Resume </div>
                                 <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
                             </div>
                         </a>
 
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  3.LIABILITY INSURANCE </div>
-                        <a href={`${baseUrl}${document?.libability_insurnce}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.libability_insurnce}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />LIABILITY INSURANCE </div>
 
@@ -139,7 +139,7 @@ const ClientDocumentView = () => {
                         </a>
 
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  5.EIN FORM (SS-4) Sent by IRS </div>
-                        <a href={`${baseUrl}${document?.enform}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.enform}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> EIN FORM</div>
 
@@ -147,7 +147,7 @@ const ClientDocumentView = () => {
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  7.CURRENT CPR CERTIFICATION </div>
-                        <a href={`${baseUrl}${document?.current_cpr_certification}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.current_cpr_certification}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />CPR CERTIFICATION </div>
 
@@ -155,7 +155,7 @@ const ClientDocumentView = () => {
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  9.Trainings (ex: HIPAA, OSHA, etc.) </div>
-                        <a href={`${baseUrl}${document?.training_hipaa_osha}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.training_hipaa_osha}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />Trainings </div>
 
@@ -167,21 +167,21 @@ const ClientDocumentView = () => {
                     <Col>
 
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  2.LICENSES + CERTIFICATIONS </div>
-                        <a href={`${baseUrl}${document?.license_certification}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.license_certification}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Licenses certifications </div>
                                 <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  4.BUSINESS FORMATION DOCUMENTS </div>
-                        <a href={`${baseUrl}${document?.buisness_formations_doc}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.buisness_formations_doc}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Business formation documents </div>
                                 <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  6.CURRENT DRIVERS LICENSE</div>
-                        <a href={`${baseUrl}${document?.currrent_driver_license}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.currrent_driver_license}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />Driver license</div>
 
@@ -190,7 +190,7 @@ const ClientDocumentView = () => {
                         </a>
 
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  8.BLOOD BORNE PATHOGEN CERTIFICATION</div>
-                        <a href={`${baseUrl}${document?.blood_bron_pathogen_certificaton}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.blood_bron_pathogen_certificaton}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Blood borne pathogen</div>
 
@@ -203,14 +203,14 @@ const ClientDocumentView = () => {
                 <Row className='m-auto justify-between' >
                     <Col>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  1.MANAGEMENT SERVICE AGREEMENT </div>
-                        <a href={`${baseUrl}${document?.management_service_aggriment}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.management_service_aggriment}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> Management service agreement  </div>
                                 <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  3.DELEGATION AGREEMENT </div>
-                        <a href={`${baseUrl}${document?.deligation_aggriment}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.deligation_aggriment}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />Delegation agreement</div>
 
@@ -222,14 +222,14 @@ const ClientDocumentView = () => {
                     </Col>
                     <Col>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  2. NONE DISCLOSURE AGREEMENT </div>
-                        <a href={`${baseUrl}${document?.nda}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.nda}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded />  NDA</div>
                                 <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
                             </div>
                         </a>
                         <div className='mt-5 text-[16px] leading-3 font-normal '>  4.ACH FORM AUTHORIZATION AGREEMENT </div>
-                        <a href={`${baseUrl}${document?.ach_fomr}`} target='_blank'>
+                        <a href={`${IMAGE_URL_1}${document?.ach_fomr}`} target='_blank'>
                             <div className='w-[337px] h-[44px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
                                 <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium   leading-5 pl-5'> <TbPhotoSquareRounded /> ACH Form </div>
 

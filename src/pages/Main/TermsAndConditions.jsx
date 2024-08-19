@@ -99,9 +99,6 @@ const TermsAndConditions = () => {
     if (loading) {
         return <div>Loading...</div>;
     }
-    if (!content) {
-        return <div>No user data available</div>;
-    }
 
     const handleSubmit = () => {
         updateDescriptions();
