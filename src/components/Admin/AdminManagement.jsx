@@ -4,8 +4,6 @@ import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { BASE_URL, IMAGE_URL } from '../../main';
 
-
-
 const AdminManagement = () => {
     const [userData, setUserData] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -13,9 +11,7 @@ const AdminManagement = () => {
     const [isAddAdminModalOpen, setIsAddAdminModalOpen] = useState(false);
     const [deleteUserId, setDeleteUserId] = useState(null);
     const [form] = Form.useForm();
-    
-    console.log(userData)
-  
+    const defaultImg = "https://i.pinimg.com/564x/57/e4/7f/57e47fa25cab8a9b49aca903bfa049a8.jpg";
 
     useEffect(() => {
         fetchUserData();
@@ -24,7 +20,6 @@ const AdminManagement = () => {
     const fetchUserData = async () => {
         const token = JSON.parse(localStorage.getItem('token'));
 
-       
         if (!token) {
             setLoading(false);
             return;
@@ -43,8 +38,7 @@ const AdminManagement = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
-           
-            setUserData(result?.data);
+            setUserData(result?.data || []);
         } catch (error) {
             console.error('Error fetching user data:', error);
             message.error('Error fetching user data');
@@ -72,7 +66,6 @@ const AdminManagement = () => {
                     'Accept': 'application/json',
                     'Authorization': `Bearer ${token}`,
                 },
-                body: JSON.stringify({ id }),
             });
 
             if (!response.ok) {
@@ -166,10 +159,6 @@ const AdminManagement = () => {
         return <div>Loading...</div>;
     }
 
-    if (!userData.length) {
-        return <div>No user data available</div>;
-    }
-   
     const columns = [
         {
             title: 'S.no',
@@ -182,13 +171,14 @@ const AdminManagement = () => {
             key: 'image',
             render: (value) => (
                 <div className='flex gap-2'>
-                  {/* {
-                    console.log(value)
-                  } */}
-                     <img className='w-8' src={IMAGE_URL+ value} alt="User Avatar" />
-                     
+                    <img 
+                        className='w-8' 
+                        src={value ? IMAGE_URL + value : "https://i.pinimg.com/564x/57/e4/7f/57e47fa25cab8a9b49aca903bfa049a8.jpg"} 
+                        alt="Image" 
+                    />
                 </div>
-            ),
+            )
+            
         },
         {
             title: 'Email',
@@ -199,19 +189,20 @@ const AdminManagement = () => {
             title: 'Action',
             dataIndex: 'id',
             key: 'action',
-            render: (id) => (
-                userData.user_type === "SUPER ADMIN" ? (
-                    <RiDeleteBinLine 
-                        className='cursor-pointer text-[16px]' 
-                        onClick={() => showDeleteModal(id)} 
-                    />
-                ) : (
-                    <RiDeleteBinLine 
-                        className='text-[16px] text-gray-400 cursor-not-allowed' 
-                        onClick={(e) => e.preventDefault()} 
-                    />
-                )
-            ),
+            render: (id, record) => {
+                const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) == "SUPER ADMIN";
+                console.log(isSuperAdmin)
+                return (
+                    <>
+                        {isSuperAdmin &&
+                            <RiDeleteBinLine
+                                className='cursor-pointer text-[16px]'
+                                onClick={() => showDeleteModal(id)}
+                            />
+                      }
+                    </>
+                );
+            }
         },
     ];
 
@@ -254,7 +245,7 @@ const AdminManagement = () => {
                                 rules={[{ required: true, message: 'Please input the admin first name!' }]}
                             >
                                 <input
-                                    className=" p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </Form.Item>
                             <Form.Item
@@ -263,7 +254,7 @@ const AdminManagement = () => {
                                 rules={[{ required: true, message: 'Please input the admin last name!' }]}
                             >
                                 <input
-                                    className=" p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </Form.Item>
                             <Form.Item
@@ -272,18 +263,17 @@ const AdminManagement = () => {
                                 rules={[{ required: true, message: 'Please input the admin email!' }]}
                             >
                                 <input
-                                    className=" p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </Form.Item>
                             <Form.Item
                                 name="user_type"
                                 label="User role"
-                                rules={[{ required: true, message: 'Please input the user role!' }]}
+                                rules={[{ required: true, message: 'Please select the user role!' }]}
                             >
                                 <select className='block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300'>
                                     <option value="USER">--</option>
                                     <option value="ADMIN">ADMIN</option>
-                                    
                                 </select>
                             </Form.Item>
                             <Form.Item
@@ -291,9 +281,9 @@ const AdminManagement = () => {
                                 label="Password"
                                 rules={[{ required: true, message: 'Please input the admin password!' }]}
                             >
-                                <input 
+                                <input
                                     type="password"
-                                    className=" p-2 block w-full h-12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                                    className="p-2 block w-full h-12 rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
                                 />
                             </Form.Item>
                             <Form.Item
@@ -313,7 +303,7 @@ const AdminManagement = () => {
                             >
                                 <input
                                     type="password"
-                                    className=" p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-12"
+                                    className="p-2 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 h-12"
                                 />
                             </Form.Item>
                             <center>

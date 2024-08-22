@@ -220,7 +220,7 @@ const UserAccountCreate = () => {
     return (
         <div style={{ padding: '20px' }}>
             <div className="flex justify-between items-center mb-6">
-                <h1 className='text-[#1DA1F2] text-[32px] font-normal p-1 w-full'>User Management Account Creation</h1>
+                <h1 className='text-[#1DA1F2] text-[32px] font-normal p-1 w-full'>Create User Account</h1>
                 <Button onClick={openAddAdminModal} style={{ color: '#666666' }} className='font-normal text-sm text-[#666666]' type="primary" ghost>
                     + Add user
                 </Button>

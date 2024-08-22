@@ -194,9 +194,9 @@ const PersonalInfo = () => {
                                             label="Have you completed training/certification for the service(s) you would like to offer?"
                                             rules={[{ required: true }]}
                                         >
-                                            <Radio.Group defaultValue={document.completed_training_certificate}>
-                                                <Radio value="Yes">Yes</Radio>
-                                                <Radio value="No">No</Radio>
+                                            <Radio.Group defaultValue={document.completed_training_certificate_service}>
+                                                <Radio value="yes">Yes</Radio>
+                                                <Radio value="no">No</Radio>
                                             </Radio.Group>
                                         </Form.Item>
                                     </Col>

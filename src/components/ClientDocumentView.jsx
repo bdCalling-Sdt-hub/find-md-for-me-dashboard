@@ -8,10 +8,10 @@ import { BASE_URL, IMAGE_URL_1 } from '../main';
 import { IMAGE_URL } from '../main';
 const ClientDocumentView = () => {
     let { userId } = useParams();
-    console.log('params id:' + userId);
+    // console.log('params id:' + userId);
     const [document, setDocument] = useState(null);
     const [loading, setLoading] = useState(true);
-
+    console.log(document);
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -47,9 +47,9 @@ const ClientDocumentView = () => {
         return <div>Loading...</div>;
     }
 
-    if (!document) {
-        return <div>No user document available</div>;
-    }
+    // if (!document) {
+    //     return <div>No user document available</div>;
+    // }
    
 
     // ******* Update status ********//
@@ -113,8 +113,8 @@ const ClientDocumentView = () => {
                 <div className='text-right'>
                     <h1 className='mt-3'>{document?.user?.first_name || "Empty"}</h1>
                     <h1 className='mt-3'>{document?.user?.email || "Empty" }</h1>
-                    <h1 className='mt-3'>{document?.user?.date || "Empty"}</h1>
-                    <h1 className='mt-3'>{document?.user?.time || "Empty "}</h1>
+                    <h1 className='mt-3'>{document?.date || "Empty"}</h1>
+                    <h1 className='mt-3'>{document?.time || "Empty "}</h1>
                 </div>
             </div>
             <div className='w-[50%] m-auto'>

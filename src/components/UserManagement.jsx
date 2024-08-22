@@ -53,7 +53,7 @@ const UserManagement = () => {
             }
             const result = await response.json();
             setUsers(result.data);
-             console.log('hello :', result.data);
+            
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -84,7 +84,8 @@ const UserManagement = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
-            setTier(result?.data);            
+            setTier(result);   
+            console.log(result)         
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -218,7 +219,7 @@ const UserManagement = () => {
     // Update Client type in admin //
 
         const updateClientType = async (id, value) => { 
-            console.log(id,value) 
+           // console.log(id,value) 
             // const tier_service_interrested=  value?.business_data?.tier_service_interrested 
             // const client_type =  value?.business_data?.client_type 
             // const id = value?.business_data?.id 

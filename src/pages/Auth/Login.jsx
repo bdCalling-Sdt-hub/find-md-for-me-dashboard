@@ -29,9 +29,10 @@ const Login = () => {
   
       if (response.ok) {
         localStorage.setItem("token", JSON.stringify(result.token));
-       
         const userType = result.data.user_type;
-        
+        localStorage.setItem("user_type", JSON.stringify(userType));
+       
+        console.log(userType)
   
         if (userType === "ADMIN" || userType === "SUPER ADMIN") {
           navigate("/");
