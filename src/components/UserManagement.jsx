@@ -301,8 +301,8 @@ const UserManagement = () => {
     };
 
     const options = [
-        { label: 'Indivisil', value: 'Indivisil' },
-        { label: 'Buisness', value: 'Buisness' },
+        { label: 'Individual', value: 'Individual' },
+        { label: 'Business', value: 'Business' },
     ];
 
     const options1 = tier ? tier?.map(item => ({

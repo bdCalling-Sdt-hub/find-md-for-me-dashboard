@@ -29,7 +29,7 @@ const Protocols = ({ data }) => {
         data?.forEach((item, index) => {
             formData.append(`tiers[${index}][id]`, item.id);
             if (uploadedFiles[item.id]) {
-                formData.append(`tiers[${index}][protocol_image]`, uploadedFiles[item.id]);
+                formData.append(`tiers[${index}][protocol_image][]`, uploadedFiles[item.id]);
             }
         });
 
@@ -94,6 +94,7 @@ const Protocols = ({ data }) => {
                                     type='file'
                                     id={`protocol_${item.id}`}
                                     style={{ display: 'none' }}
+                                    multiple 
                                 />
                             </label>
                         </Form.Item>
