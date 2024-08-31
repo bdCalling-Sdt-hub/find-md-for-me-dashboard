@@ -16,7 +16,7 @@ const AddTier = () => {
     const [currentEhr, setCurrentEhr] = useState(null);
     const [form] = Form.useForm();
 
-    
+
 
     useEffect(() => {
         fetchEhrData();
@@ -42,7 +42,7 @@ const AddTier = () => {
                 throw new Error('Failed to fetch EHR data');
             }
             const result = await response.json();
-            
+
             setEhrData(result.data);
         } catch (error) {
             console.error('Error fetching tier data:', error);
@@ -63,7 +63,7 @@ const AddTier = () => {
             });
             return;
         }
-  
+
         //   values?.service = JsonServier
         console.log(values)
         const url = isEditMode ? `${BASE_URL}update-tiear/${currentEhr?.id}` : `${BASE_URL}add-tiear`;
@@ -108,16 +108,16 @@ const AddTier = () => {
 
     const openEditModal = (tier) => {
         setIsEditMode(true);
-       
+
         setCurrentEhr(tier);
         setIsModalOpen(true);
         form.setFieldsValue({
-            id : tier?.id,
+            id: tier?.id,
             tyer_name: tier.tyer_name,
             price_1: tier.price[0].price_1,
             price_2: tier.price[0].price_2,
             duration: tier.price[0].duration,
-           
+
             service: tier.price[0]?.service || []
         });
     };
@@ -139,35 +139,36 @@ const AddTier = () => {
             </div>
 
             <div className='flex flex-1 justify-center items-center mt-5 gap-2'>
-                {ehrData?.map((tier) => 
-                    
-                   {
-                
-                    
+                {ehrData?.map((tier) => {
+
+
                     return (
-                        <div key={tier.id} className='col-span-4 bg-[#E8F6FE] w-[25%] rounded-[8px] p-5'>
-                        <div className='flex justify-end text-[#1D75F2] text-[25px] font-bold cursor-pointer'>
-                            <CiEdit onClick={() => openEditModal(tier)} />
+                        <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 p-4 rounded-lg">
+                            <div key={tier.id} className='col-span-4 bg-[#E8F6FE] w-full rounded-[8px] p-5'>
+                                <div className=' flex justify-end text-[#1D75F2] text-[25px] font-bold cursor-pointer'>
+                                    <CiEdit onClick={() => openEditModal(tier)} />
+                                </div>
+                                <h1 className='text-[#FF31F7] text-[20px] font-semibold leading-6'>{tier?.tyer_name}</h1>
+                                <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_1}</h1>
+                                <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_2}</h1>
+                                <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.duration}</p>
+                                <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.pricing_type} </p>
+                                <p className='text-[#252B42] text-[16px] font-semibold mt-3 mb-3'>Services Covered: </p>
+
+                                <ul>
+                                    {tier?.price ? tier?.price[0]?.service?.map((service, index) => (
+                                        <li key={index} className='list-none text-[#1D75F2] flex gap-1 mt-2 mb-2'>
+                                            <FaCheck />
+                                            <p className='text-[#252B42] text-[14px] font-normal'>{service ? service : ''}</p>
+                                        </li>
+                                    )) : <li>No services available</li>}
+                                </ul>
+                                <Button className='bg-[#C738BD] w-full h-[42px] text-white'>Get Started</Button>
+                            </div>
                         </div>
-                        <h1 className='text-[#FF31F7] text-[20px] font-semibold leading-6'>{tier?.tyer_name}</h1>
-                        <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_1}</h1>
-                        <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_2}</h1>
-                        <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.duration}</p>
-                        <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.pricing_type} </p>
-                        <p className='text-[#252B42] text-[16px] font-semibold mt-3 mb-3'>Services Covered: </p>
-                        
-                        <ul>
-                            {tier?.price ?  tier?.price[0]?.service?.map((service, index) => (
-                                <li key={index} className='list-none text-[#1D75F2] flex gap-1 mt-2 mb-2'>
-                                    <FaCheck />
-                                    <p className='text-[#252B42] text-[14px] font-normal'>{service?service:''}</p>
-                                </li>
-                            )) : <li>No services available</li>}
-                        </ul>
-                        <Button className='bg-[#C738BD] w-full h-[42px] text-white'>Get Started</Button>
-                    </div>
+
                     )
-                   }
+                }
                 )}
             </div>
 
@@ -239,7 +240,7 @@ const AddTier = () => {
                                 <Form.List name="service">
                                     {(fields, { add, remove }) => (
                                         <>
-                                        {console?.log(fields)}
+                                            {console?.log(fields)}
                                             {fields?.map((field, index) => (
                                                 <Form.Item
                                                     required={false}

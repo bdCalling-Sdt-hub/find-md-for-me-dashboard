@@ -431,7 +431,7 @@ const UserManagement = () => {
                             <Form style={{ marginTop: '30px' }}  >
                                 <Select
                                     name='tier_service_interrested'
-                                    placeholder="Select tier name"
+                                    placeholder="Select client type"
                                     // mode="tags"
                                     style={{
                                         width: '100%',
@@ -450,7 +450,8 @@ const UserManagement = () => {
 
                                 <Select
                                     name='client_type'
-                                    placeholder="Select client type"
+                                    placeholder="Select tier name"
+                                    
                                     // mode="tags"
                                     style={{
                                         width: '100%',

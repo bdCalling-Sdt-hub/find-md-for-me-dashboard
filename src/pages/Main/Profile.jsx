@@ -124,7 +124,7 @@ const Profile = () => {
         formData.append('phone', values.phone);
         formData.append('buisness_name', values.buisness_name);
         formData.append('buisness_address', values.buisness_address);
-        formData.append('user_type', values.user_type);
+        // formData.append('user_type', values.user_type);
 
         // Include the image if selected
         if (image) {
@@ -325,7 +325,7 @@ const Profile = () => {
                             />
                         </Form.Item>
 
-                        <Form.Item
+                        {/* <Form.Item
                             name="user_type"
                             label={<p className="text-[#415D71] text-sm leading-5 poppins-semibold">User Type</p>}
                             className='col-span-12'
@@ -347,7 +347,7 @@ const Profile = () => {
                                 <option value="ADMIN">ADMIN</option>
                                 <option value="SUPER ADMIN">SUPER ADMIN</option>
                             </select>
-                        </Form.Item>
+                        </Form.Item> */}
 
                         <Form.Item
                             className='col-span-12'
