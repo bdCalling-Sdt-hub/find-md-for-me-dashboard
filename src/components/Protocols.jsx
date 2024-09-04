@@ -5,31 +5,37 @@ import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
 
 const Protocols = ({ data }) => {
-   
+
     const [form] = Form.useForm();
     const [uploadedFiles, setUploadedFiles] = useState({});
     const [fileNames, setFileNames] = useState({});
 
-    const handleFileChange = (id, file) => {
+    const handleFileChange = (id, files) => {
+        const fileArray = Array.from(files); // Convert FileList to an array
+
         setUploadedFiles(prev => ({
             ...prev,
-            [id]: file,
+            [id]: fileArray,
         }));
 
-        // Store the file name for display
+        // Store the file names for display
         setFileNames(prev => ({
             ...prev,
-            [id]: file ? file.name : null,
+            [id]: fileArray.map(file => file.name).join(', '), // Join file names with a comma
         }));
     };
+
 
     const onFinish = async () => {
         const formData = new FormData();
 
         data?.forEach((item, index) => {
             formData.append(`tiers[${index}][id]`, item.id);
+
             if (uploadedFiles[item.id]) {
-                formData.append(`tiers[${index}][protocol_image][]`, uploadedFiles[item.id]);
+                uploadedFiles[item.id].forEach((file, fileIndex) => {
+                    formData.append(`tiers[${index}][protocol_image][${fileIndex}]`, file);
+                });
             }
         });
 
@@ -62,6 +68,7 @@ const Protocols = ({ data }) => {
         }
     };
 
+
     return (
         <Form form={form} onFinish={onFinish}>
             <h1 className='text-[#252B42] text-lg font-medium'>Protocols</h1>
@@ -90,12 +97,13 @@ const Protocols = ({ data }) => {
                                 </div>
                                 <input
                                     name={`protocol_${item.id}`}
-                                    onChange={(e) => handleFileChange(item.id, e.target.files[0])}
+                                    onChange={(e) => handleFileChange(item.id, e.target.files)}
                                     type='file'
                                     id={`protocol_${item.id}`}
                                     style={{ display: 'none' }}
-                                    multiple 
+                                    multiple
                                 />
+
                             </label>
                         </Form.Item>
                     </div>
