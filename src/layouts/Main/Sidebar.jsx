@@ -150,7 +150,7 @@ const Sidebar = () => {
         <div className=''>
             <div className='py-[30px]'>
                 <Link to="/" className=" flex justify-center items-center">
-               <img src={logo} alt="" />
+               <img src={logo} alt="" className='h-[35px]' />
                 </Link>
             </div>
 
