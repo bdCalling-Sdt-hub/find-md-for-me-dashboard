@@ -49,7 +49,7 @@ const AboutUs = () => {
     }, []);
 
     const updateDescriptions = async () => {
-        console.log(content)
+        // console.log(content) 
         const token = JSON.parse(localStorage.getItem('token'));
         if (!token) {
             Swal.fire({

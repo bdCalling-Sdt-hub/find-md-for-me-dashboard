@@ -6,7 +6,7 @@ import { BASE_URL } from '../main';
 //const BASE_URL = 'http://192.168.30.199:3000/api/';
 const handleMenuClick = (e) => {
     message.info(`Clicked on menu item ${e.key}`);
-    console.log('Clicked on', e);
+    // console.log('Clicked on', e); 
 };
 
 const columns = [

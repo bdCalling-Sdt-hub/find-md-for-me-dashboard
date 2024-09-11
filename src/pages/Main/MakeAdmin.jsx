@@ -9,7 +9,8 @@ import Swal from 'sweetalert2';
 import { BASE_URL } from '../../main';
 import { IoIosSearch } from "react-icons/io";
 const MakeAdmin = () => {
-    const [clientDocument, setClientDocument] = useState([]);
+    const [clientDocument, setClientDocument] = useState([]); 
+    // console.log(clientDocument); 
     const [loading, setLoading] = useState(true);
     const [status, setStatus] = useState('all');
     const [pagination, setPagination] = useState({ current: 1, pageSize: 8, total: 0 });

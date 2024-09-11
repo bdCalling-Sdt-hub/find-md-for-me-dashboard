@@ -18,7 +18,7 @@ const PersonalInfo = () => {
     const [btn, setBtn] = useState('personal');
     const [form] = Form.useForm();
 
-    console.log("document", document)
+    // console.log("document", document) 
 
     useEffect(() => {
         const fetchDocument = async () => {

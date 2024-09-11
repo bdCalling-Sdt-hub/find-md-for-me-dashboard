@@ -13,7 +13,7 @@ const UserAccountCreate = () => {
     const [isAddAdminModalOpen, setIsAddAdminModalOpen] = useState(false);
     const [deleteUserId, setDeleteUserId] = useState(null);
     const [form] = Form.useForm();
-    console.log(userData)
+    // console.log(userData) 
     useEffect(() => {
         fetchUserData();
     }, []);
@@ -40,7 +40,7 @@ const UserAccountCreate = () => {
                 throw new Error('Failed to fetch user data');
             }
             const result = await response.json();
-          console.log(result.data);
+        //   console.log(result.data); 
             setUserData(result.data);
                
             

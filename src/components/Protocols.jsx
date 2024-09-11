@@ -5,7 +5,7 @@ import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
 
 const Protocols = ({ data }) => {
-
+    // console.log(data); 
     const [form] = Form.useForm();
     const [uploadedFiles, setUploadedFiles] = useState({});
     const [fileNames, setFileNames] = useState({});
@@ -28,17 +28,19 @@ const Protocols = ({ data }) => {
 
     const onFinish = async () => {
         const formData = new FormData();
-
-        data?.forEach((item, index) => {
-            formData.append(`tiers[${index}][id]`, item.id);
-
-            if (uploadedFiles[item.id]) {
-                uploadedFiles[item.id].forEach((file, fileIndex) => {
-                    formData.append(`tiers[${index}][protocol_image][${fileIndex}]`, file);
-                });
-            }
-        });
-
+    
+        if (Array.isArray(data)) {
+            data.forEach((item, index) => {
+                formData.append(`tiers[${index}][id]`, item.id);
+    
+                if (uploadedFiles[item.id]) {
+                    uploadedFiles[item.id].forEach((file, fileIndex) => {
+                        formData.append(`tiers[${index}][protocol_image][${fileIndex}]`, file);
+                    });
+                }
+            });
+        }
+    
         try {
             const response = await fetch(`${BASE_URL}tiear-update`, {
                 method: 'POST',
@@ -47,19 +49,21 @@ const Protocols = ({ data }) => {
                 },
                 body: formData,
             });
-
+    
             if (!response.ok) {
                 const errorText = await response.text();
                 throw new Error(errorText);
             }
-
+    
             const result = await response.json();
+            // console.log(result); 
             Swal.fire({
                 icon: 'success',
                 title: result.message,
                 text: 'Profile updated successfully',
             });
-        } catch (error) {
+        } catch (error) { 
+            // console.log(`error ${error}`); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -83,7 +87,7 @@ const Protocols = ({ data }) => {
                                 style={{
                                     width: '324px',
                                     cursor: 'pointer',
-                                    height: '48px',
+                                 
                                     background: '#E8F6FE',
                                     borderRadius: '18px',
                                     display: 'block',

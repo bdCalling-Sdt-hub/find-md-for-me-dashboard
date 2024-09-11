@@ -38,7 +38,7 @@ const ClientProtal = () => {
                 }
                 const result = await response.json();// Check the response
                 setDocument(result);// Set document directly if result contains the user data
-               console.log(document)
+            //    console.log(document) 
             } catch (error) {
                 console.error('Error fetching document:', error);
             }

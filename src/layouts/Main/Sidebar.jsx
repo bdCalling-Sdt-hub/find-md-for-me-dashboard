@@ -7,8 +7,8 @@ import { LiaUsersCogSolid } from "react-icons/lia";
 import { PiUsersThreeLight } from "react-icons/pi";
 import { TbUserPlus } from "react-icons/tb";
 import { CiSettings } from "react-icons/ci";
-import { RiTeamLine } from "react-icons/ri";
-import { useEffect, useState } from 'react';
+import { RiTeamLine } from "react-icons/ri"; 
+import logo from "../../assets/logo.png"
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../../main';
 const { SubMenu } = Menu;
@@ -142,19 +142,15 @@ const Sidebar = () => {
                     title: "Client Portal",
                     path: "/client-portal",
                 },
-                {
-                    id: 8,
-                    path: "/buisness"
-                },
             ]
         },
     ];
 
     return (
         <div className=''>
-            <div className='pt-5 pb-[50px]'>
-                <Link to="/" className="font-[700] text-lg text-[#1DA1F2] flex flex-1 justify-center items-center">
-                    Find a MD 4 Me
+            <div className='py-[30px]'>
+                <Link to="/" className=" flex justify-center items-center">
+               <img src={logo} alt="" />
                 </Link>
             </div>
 

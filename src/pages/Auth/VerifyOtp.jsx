@@ -6,11 +6,11 @@ import Swal from 'sweetalert2';
 import { BASE_URL } from '../../main';
 const VerifyOtp = () => {
     const {state} = useLocation();
-    console.log(state)
+    // console.log(state) 
     const navigate = useNavigate();
 
     const onChange = (text) => {
-        console.log('onChange:', text);
+        // console.log('onChange:', text); 
     };
 
     const sharedProps = {
@@ -18,13 +18,13 @@ const VerifyOtp = () => {
     };
 
     const handleSubmit= async( values)=>{
-        console.log("Received Values", values);
+        // console.log("Received Values", values); 
         await verifyOtp(values);
        
     }
 
     const verifyOtp = async (values) => {
-        console.log(values);
+        // console.log(values); 
         try {
             const response = await fetch(`${BASE_URL}email-verify`, {
                 method: 'POST',

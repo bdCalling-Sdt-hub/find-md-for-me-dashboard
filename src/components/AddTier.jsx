@@ -240,7 +240,7 @@ const AddTier = () => {
                                 <Form.List name="service">
                                     {(fields, { add, remove }) => (
                                         <>
-                                            {console?.log(fields)}
+                                            {/* {console?.log(fields)}  */}
                                             {fields?.map((field, index) => (
                                                 <Form.Item
                                                     required={false}

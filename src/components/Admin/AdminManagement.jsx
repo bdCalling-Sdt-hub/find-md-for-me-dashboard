@@ -191,7 +191,7 @@ const AdminManagement = () => {
             key: 'action',
             render: (id, record) => {
                 const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) == "SUPER ADMIN";
-                console.log(isSuperAdmin)
+                // console.log(isSuperAdmin) 
                 return (
                     <>
                         {isSuperAdmin &&

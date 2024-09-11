@@ -4,7 +4,7 @@ import { BASE_URL, IMAGE_URL } from '../../main';
 
 const Header = () => {
     const [user, setUser] = useState(null);
-    console.log(user);
+    // console.log(user); 
     const [loading, setLoading] = useState(true)
     useEffect(() => {
         const fetchUserData = async () => {
@@ -28,7 +28,7 @@ const Header = () => {
 
                 }
                 const result = await response.json();
-                console.log(result)
+                // console.log(result) 
                 setUser(result);
 
             } catch (error) {

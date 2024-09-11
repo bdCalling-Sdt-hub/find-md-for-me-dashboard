@@ -14,7 +14,7 @@ const AdminTable = () => {
             }
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log(result)
+                // console.log(result) 
             }
         });
     }

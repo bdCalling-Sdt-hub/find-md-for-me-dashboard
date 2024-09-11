@@ -44,7 +44,7 @@ const Team = () => {
             }
 
             const result = await response.json();
-            console.log(result); // Log the response to see its structure
+            // console.log(result);  // Log the response to see its structure
 
             if (Array.isArray(result.data.data)) {
                 setData(result.data.data);

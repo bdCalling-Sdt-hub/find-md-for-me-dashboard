@@ -9,7 +9,7 @@ const BusinessInfo = ({ data }) => {
     const [form] = Form.useForm();
     
     useEffect(() => {
-        console.log('Business Data:', data); // Debugging line
+        // console.log('Business Data:', data);  // Debugging line
         if (data) {
             form.setFieldsValue({
                 buisness_name: data?.buisness_name,

@@ -9,27 +9,37 @@ const StandingOrder = ({ data }) => {
     const [uploadedFiles, setUploadedFiles] = useState({});
     const [fileNames, setFileNames] = useState({}); // State to store file names
 
-    const handleFileChange = (id, file) => {
+
+    const handleFileChange = (id, files) => {
+        const fileArray = Array.from(files); // Convert FileList to an array
+
         setUploadedFiles(prev => ({
             ...prev,
-            [id]: file,
+            [id]: fileArray,
         }));
 
-        // Update the file name state
+        // Store the file names for display
         setFileNames(prev => ({
             ...prev,
-            [id]: file ? file.name : null,
+            [id]: fileArray.map(file => file.name).join(', '), // Join file names with a comma
         }));
-    };
+    };  
 
     const onFinish = async () => {
         const formData = new FormData();
 
         data?.forEach((item, index) => {
-            formData.append(`tiers[${index}][id]`, item.id);
+            formData.append(`tiers[${index}][id]`, item.id); 
+
             if (uploadedFiles[item.id]) {
-                formData.append(`tiers[${index}][standing_image]`, uploadedFiles[item.id]);
-            }
+                uploadedFiles[item.id].forEach((file, fileIndex) => {
+                    formData.append(`tiers[${index}][standing_image][${fileIndex}]`, file);
+                });
+            } 
+
+            // if (uploadedFiles[item.id]) {
+            //     formData.append(`tiers[${index}][standing_image]`, uploadedFiles[item.id]);
+            // }
         });
 
         try {
@@ -64,36 +74,37 @@ const StandingOrder = ({ data }) => {
     return (
         <div>
             <Form form={form} onFinish={onFinish}>
-                <h1 className='text-[#252B42] text-lg font-medium'>Standing Order</h1>
+                <h1 className='text-[#252B42] text-lg pb-4 font-semibold'>Standing Order</h1>
                 {data && data.length > 0 ? (
                     data.map(item => (
-                        <div key={item.id}>
-                            <p className='text-[16px] text-black font-normal leading-3 mt-2'>{item.tyer_name}</p>
-                            <p className='text-[16px] text-black font-normal leading-3 mt-12'>Upload Protocols Document</p>
+                        <div key={item.id} className='mb-10'>
+                            <p className='text-[16px] text-black font-normal leading-3 pt-2'>{item.tyer_name}</p>
+                            <p className='text-[16px] text-black font-normal leading-3 py-4'>Upload Standing Document</p>
                             <Form.Item style={{ marginBottom: '24px' }}>
                                 <label
                                     htmlFor={`protocol_${item.id}`}
                                     style={{
                                         width: '324px',
                                         cursor: 'pointer',
-                                        height: '48px',
+                                    
                                         background: '#E8F6FE',
                                         borderRadius: '18px',
                                         display: 'block',
                                         float: 'left',
-                                        marginTop: '20px',
+                                     
                                     }}
                                 >
                                     <div className='flex items-center text-[14px] font-medium text-[#1D75F2] leading-4 p-4'>
-                                        <LiaFileUploadSolid />
+                                        <LiaFileUploadSolid  className='text-2xl'/>
                                         <p>{fileNames[item.id] || 'Click to Upload'}</p>
                                     </div>
                                     <input
                                         name={`protocol_${item.id}`}
-                                        onChange={(e) => handleFileChange(item.id, e.target.files[0])}
+                                        onChange={(e) => handleFileChange(item.id, e.target.files)}
                                         type='file'
                                         id={`protocol_${item.id}`}
-                                        style={{ display: 'none' }}
+                                        style={{ display: 'none' }} 
+                                        multiple
                                     />
                                 </label>
                             </Form.Item>

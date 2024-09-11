@@ -38,7 +38,7 @@ const Notification = () => {
             const result = await response.json();
             setNotifications(result.data || []);
             setTotalPages(result.total_pages || 1); // Total pages from API
-            console.log(result)
+            // console.log(result) 
         } catch (error) {
             console.error('Error fetching notifications:', error);
             message.error('Error fetching notifications');

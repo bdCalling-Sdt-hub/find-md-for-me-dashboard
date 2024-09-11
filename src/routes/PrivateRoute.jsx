@@ -5,7 +5,9 @@ import { BASE_URL } from '../main';
 const PrivateRoute = ({ children }) => {
   const location = useLocation();
   const [user, setUser] = useState(null); 
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true); 
+
+  // console.log(user); 
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,7 +28,8 @@ const PrivateRoute = ({ children }) => {
         });
 
         const result = await response.json();
-        setUser(result.user);
+        setUser(result.user); 
+        // console.log(result); 
         
 
       } catch (error) {

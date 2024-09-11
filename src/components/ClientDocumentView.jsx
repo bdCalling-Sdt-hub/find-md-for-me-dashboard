@@ -11,7 +11,7 @@ const ClientDocumentView = () => {
     // console.log('params id:' + userId);
     const [document, setDocument] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(document);
+    // console.log(document); 
 
     useEffect(() => {
         const fetchDocument = async () => {

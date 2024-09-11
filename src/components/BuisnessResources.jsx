@@ -53,7 +53,7 @@ const BuisnessResources = () => {
                         style={btn === 'Bsuiness' ? { ...buttonStyle, backgroundColor: '#C738BD', color: 'white' } : buttonStyle}
 
                     >
-                        Bsuiness Resorces
+                        Business Resources
                     </Button>
                     <Button
                         onClick={() => handleClick('Vendors')}

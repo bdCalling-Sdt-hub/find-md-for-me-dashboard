@@ -12,10 +12,10 @@ const UpdatePassword = () => {
 
     // Ensure email is defined
     
-   console.log(state)
+//    console.log(state) 
 
     const handleSubmit = async (values) => {
-        console.log("Received Values", values);
+        // console.log("Received Values", values); 
 
         await updatePassword(values);
     };

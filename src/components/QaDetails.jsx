@@ -8,7 +8,7 @@ const QaDetails = () => {
     const [document, setDocument] = useState([]);
     const [loading, setLoading] = useState(true);
     const { userId } = useParams();
-    console.log(userId);
+    // console.log(userId); 
     useEffect(() => {
         const fetchDocument = async () => {
             const token = JSON.parse(localStorage.getItem('token'));
@@ -29,7 +29,7 @@ const QaDetails = () => {
                     throw new Error('Failed to fetch user data');
                 }
                 const result = await response.json();
-                console.log( result)
+                // console.log( result) 
                 setDocument(result.data);
             } catch (error) {
                 console.error('Error fetching document:', error);
@@ -62,7 +62,7 @@ const QaDetails = () => {
                     {document?.file && document.file.length > 0 && (
                         document.file.map((file, index) => (
                             <div key={index} className='text-[14px] font-medium text-[#1D75F2] leading-4 w-full h-[70px] bg-[#E8F6FE] rounded-[10px] mb-2'>
-                                {console.log(file)}
+                                {/* {console.log(file)}  */}
                                 <a
                                     href={`${IMAGE_URL}${file}`}
                                     target='_blank'

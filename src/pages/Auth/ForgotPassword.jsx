@@ -10,7 +10,7 @@ const ForgotPassword = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (values) => {
-        console.log("Received Values", values);
+        // console.log("Received Values", values); 
         await forgetPassword(values);
     }
 

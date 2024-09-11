@@ -9,27 +9,32 @@ const Consents = ({ data }) => {
     const [uploadedFiles, setUploadedFiles] = useState({});
     const [fileNames, setFileNames] = useState({}); // State to store file names
 
-    const handleFileChange = (id, file) => {
+    const handleFileChange = (id, files) => {
+        const fileArray = Array.from(files); // Convert FileList to an array
+
         setUploadedFiles(prev => ({
             ...prev,
-            [id]: file,
+            [id]: fileArray,
         }));
 
-        // Update the file name state
+        // Store the file names for display
         setFileNames(prev => ({
             ...prev,
-            [id]: file ? file.name : null,
+            [id]: fileArray.map(file => file.name).join(', '), // Join file names with a comma
         }));
-    };
+    };  
 
     const onFinish = async () => {
         const formData = new FormData();
 
         data?.forEach((item, index) => {
-            formData.append(`tiers[${index}][id]`, item.id);
+            formData.append(`tiers[${index}][id]`, item.id); 
             if (uploadedFiles[item.id]) {
-                formData.append(`tiers[${index}][constant_image]`, uploadedFiles[item.id]);
-            }
+                uploadedFiles[item.id].forEach((file, fileIndex) => {
+                    formData.append(`tiers[${index}][constant_image][${fileIndex}]`, file);
+                });
+            } 
+          
         });
 
         try {
@@ -76,7 +81,7 @@ const Consents = ({ data }) => {
                                     style={{
                                         width: '324px',
                                         cursor: 'pointer',
-                                        height: '48px',
+                                       
                                         background: '#E8F6FE',
                                         borderRadius: '18px',
                                         display: 'block',
@@ -90,10 +95,11 @@ const Consents = ({ data }) => {
                                     </div>
                                     <input
                                         name={`protocol_${item.id}`}
-                                        onChange={(e) => handleFileChange(item.id, e.target.files[0])}
+                                        onChange={(e) => handleFileChange(item.id, e.target.files)}
                                         type='file'
                                         id={`protocol_${item.id}`}
-                                        style={{ display: 'none' }}
+                                        style={{ display: 'none' }} 
+                                        multiple
                                     />
                                 </label>
                             </Form.Item>

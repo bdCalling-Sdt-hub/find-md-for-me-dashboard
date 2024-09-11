@@ -10,7 +10,7 @@ import { IMAGE_URL } from '../main';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]); 
-   
+//    console.log(users); 
     const [tier, setTier] = useState();
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -59,7 +59,38 @@ const UserManagement = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }; 
+
+    // business resourse status  
+    const handleBusinessStatus =async(id) =>{
+        // console.log(id);   
+
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (!token) {
+            setLoading(false);
+            return;
+        }
+        try {
+            const response = await fetch(`${BASE_URL}update-user/${id}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`, 
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+            const result = await response.json();
+                fetchUserManagement()   
+            
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        }  finally {
+            setLoading(false);
+        }
+    }
 
     // show tiear //
 
@@ -85,7 +116,7 @@ const UserManagement = () => {
             }
             const result = await response.json();
             setTier(result);   
-            console.log(result)         
+            // console.log(result)          
         } catch (error) {
             console.error('Error fetching user data:', error);
         } finally {
@@ -391,6 +422,26 @@ const UserManagement = () => {
             key: 'profileStatus',
             render: (text, record) => {
                 return record?.user?.user_update ? record?.user?.user_update?.status : 'No Updates';
+            },
+
+        }, 
+        {
+            title: 'Business Status',
+            dataIndex: 'business_status',
+            key: 'business_status',
+            render: (text, record) => { 
+                // console.log(record); 
+       return <Button  
+        onClick={()=>handleBusinessStatus(record?.user?.id)}
+       style={{
+        height:"40px" ,
+        borderRadius:"10px" ,
+        color:"white" ,  
+        backgroundColor: record?.user?.another_status === "disable" ? "#1D75F2" : "#C738BD"
+         }}> 
+         {record?.user?.another_status ?  record?.user?.another_status : "No Status"}
+         </Button>
+
             },
 
         },
