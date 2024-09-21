@@ -73,14 +73,14 @@ const GoodFithExam = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'EHR deleted successfully',
+                text: 'GFE deleted successfully',
             });
             fetchEhrData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to delete EHR',
+                text: 'Failed to delete GFE',
             });
         }
     };
@@ -111,13 +111,13 @@ const GoodFithExam = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to save EHR');
+                throw new Error('Failed to save GFE');
             }
 
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: isEditMode ? 'EHR updated successfully' : 'EHR added successfully',
+                text: isEditMode ? 'GFE updated successfully' : 'GFE added successfully',
             });
             fetchEhrData();
             setIsModalOpen(false);
@@ -126,7 +126,7 @@ const GoodFithExam = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to save EHR',
+                text: 'Failed to save GFE',
             });
         }
     };

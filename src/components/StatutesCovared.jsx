@@ -118,7 +118,7 @@ const StatutesCovared = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'User deleted successfully',
+                text: 'State deleted successfully',
             });
             fetchUserData();
         } catch (error) {
@@ -159,7 +159,7 @@ const StatutesCovared = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Admin added successfully',
+                text: 'State added successfully',
             });
             fetchUserData();
         } catch (error) {
@@ -244,7 +244,7 @@ const StatutesCovared = () => {
             <Modal open={isDeleteModalOpen} onCancel={handleCancel} footer={null}>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#E8F6FE]">
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <h2>Are you sure you want to delete this user?</h2>
+                        <h2>Are you sure you want to delete this state?</h2>
                         <div className="flex justify-end gap-4 mt-4">
                             <Button onClick={handleCancel}>Cancel</Button>
                             <Button type="primary" onClick={handleDeleteConfirm}>Yes</Button>
@@ -264,7 +264,7 @@ const StatutesCovared = () => {
                             <Form.Item
                                 name="state_name"
                                 label="State Name"
-                                rules={[{ required: true, message: 'Please input the admin first name!' }]}
+                                rules={[{ required: true, message: 'Please input the state name!' }]}
                             >
                                 <input
                                     className=" p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"

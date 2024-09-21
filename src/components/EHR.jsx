@@ -164,9 +164,9 @@ const EHR = () => {
 
             <div className='bg-[#ffffff] p-5'>
 
-                {ehr.map((item) => (
+                {ehr.map((item , index) => (
                     <div className='flex gap-6 mb-7' key={item.id}>
-                        <FaRegQuestionCircle size={28} color='#1DA1F2' />
+                       <p className=' py-3 font-semibold '>{index+1}.</p>
                         <div className='w-full'>
                             <div
                                 className='p-4 rounded-lg text-[#707070] leading-6 text-[16px] font-medium mb-4 bg-[#F9F9F9]'
