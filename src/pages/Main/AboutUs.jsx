@@ -86,8 +86,8 @@ const AboutUs = () => {
             const result = await response.json();
             Swal.fire({
                 icon: 'success',
-                title: result.message,
-                text: 'Description updated successfully',
+                text: result.message,
+       
             });
         } catch (error) {
             Swal.fire({
@@ -104,13 +104,6 @@ const AboutUs = () => {
 
     const handleSubmit = () => {
         updateDescriptions();
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "About Us Updated Successfully",
-            showConfirmButton: false,
-            timer: 1500
-        });
     }
 
     return (

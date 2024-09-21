@@ -67,20 +67,20 @@ const FaqPage = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to delete EHR');
+                throw new Error('Failed to delete FAQ');
             }
 
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'EHR deleted successfully',
+                text: 'FAQ deleted successfully',
             });
             fetchEhrData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to delete EHR',
+                text: 'Failed to delete FAQ',
             });
         }
     };
@@ -117,7 +117,7 @@ const FaqPage = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: isEditMode ? 'EHR updated successfully' : 'EHR added successfully',
+                text: isEditMode ? 'FAQ updated successfully' : 'FAQ added successfully',
             });
             fetchEhrData();
             setIsModalOpen(false);
@@ -126,7 +126,7 @@ const FaqPage = () => {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to save EHR',
+                text: 'Failed to save FAQ',
             });
         }
     };
@@ -155,17 +155,17 @@ const FaqPage = () => {
     return (
         <div>
             <div className=' text-end '>
-                <Button type="primary" className='m-3'  onClick={showAddModal}>
-                    Add FAq
+                <Button type="primary" className='m-3 '  onClick={showAddModal}>
+                   + Add FAQ
                 </Button>
 
             </div>
 
             <div className='bg-[#ffffff] p-5'>
 
-                {ehr.map((item) => (
-                    <div className='flex gap-6 mb-7' key={item.id}>
-                        <FaRegQuestionCircle size={28} color='#1DA1F2' />
+                {ehr.map((item , index) => (
+                    <div className='flex gap-6 mb-7 ' key={item.id}>
+                        <p className=' py-3 font-semibold '>{index+1}.</p>
                         <div className='w-full'>
                             <div
                                 className='p-4 rounded-lg text-[#707070] leading-6 text-[16px] font-medium mb-4 bg-[#F9F9F9]'
@@ -201,7 +201,7 @@ const FaqPage = () => {
                     <Form form={form} layout="vertical" onFinish={handleAddOrUpdate} className="p-12 mt-12">
                         <Form.Item
                             name="question"
-                            label="FAq Question"
+                            label="FAQ Question"
                             rules={[{ required: true, message: 'Please input the question!' }]}
                         >
                                      <input
@@ -210,7 +210,7 @@ const FaqPage = () => {
                         </Form.Item>
                         <Form.Item
                             name="answare"
-                            label="FAq Answer"
+                            label="FAQ Answer"
                             rules={[{ required: true, message: 'Please input the answer!' }]}
                         >
                             <input className=" p-2 block w-full rounded-md border-0 py-1.5 h-12 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" />

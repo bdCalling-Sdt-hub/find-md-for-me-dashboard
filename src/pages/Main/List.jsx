@@ -10,7 +10,7 @@ import { BASE_URL } from '../../main';
 const List = () => {
     const navigate = useNavigate();
     const [form] = Form.useForm();
-    const [data, setData] = useState([]);
+    const [data, setData] = useState([]); 
     const [loading, setLoading] = useState(false);
     const [search, setSearch] = useState('');
 
@@ -155,7 +155,8 @@ const List = () => {
         {
             title: 'S.no',
             dataIndex: 'id',
-            key: 'id',
+            key: 'id', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'User',
@@ -204,7 +205,7 @@ const List = () => {
             </div>
             <Row>
                 <Col span={24}>
-                    <Table columns={columns} dataSource={data} pagination={{ pageSize: 8 }} loading={loading} />
+                    <Table columns={columns} dataSource={data}  loading={loading} />
                 </Col>
             </Row>
         </div>

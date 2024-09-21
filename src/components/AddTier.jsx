@@ -85,16 +85,18 @@ const AddTier = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: isEditMode ? 'EHR updated successfully' : 'EHR added successfully',
-            });
-            fetchEhrData();
+                text: isEditMode ? 'Tier updated successfully' : 'Tier added successfully',
+            }); 
+
+           await fetchEhrData();
             setIsModalOpen(false);
             form.resetFields();
-        } catch (error) {
+        } catch (error) { 
+
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to save EHR',
+                text: 'Failed to save Tier',
             });
         }
     };
@@ -106,7 +108,8 @@ const AddTier = () => {
         form.resetFields();
     };
 
-    const openEditModal = (tier) => {
+    const openEditModal = (tier) => { 
+        console.log(tier);
         setIsEditMode(true);
 
         setCurrentEhr(tier);
@@ -117,7 +120,7 @@ const AddTier = () => {
             price_1: tier.price[0].price_1,
             price_2: tier.price[0].price_2,
             duration: tier.price[0].duration,
-
+            pricing_type:tier?.price[0]?.pricing_type ,
             service: tier.price[0]?.service || []
         });
     };
@@ -152,7 +155,7 @@ const AddTier = () => {
                                 <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_1}</h1>
                                 <h1 className='text-[#252B42] text-[32px] font-medium leading-9 mt-2'>${tier?.price[0]?.price_2}</h1>
                                 <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.duration}</p>
-                                <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>{tier?.price[0]?.pricing_type} </p>
+                                <p className='text-[12px] text-[#252B42] font-normal leading-3 mt-2'>Monthly</p>
                                 <p className='text-[#252B42] text-[16px] font-semibold mt-3 mb-3'>Services Covered: </p>
 
                                 <ul>
@@ -173,8 +176,8 @@ const AddTier = () => {
             </div>
 
             <Modal open={isModalOpen} onCancel={closeAddModal} footer={null}>
-                <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#E8F6FE]">
-                    <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+                <div className="flex  flex-1 flex-col justify-center  py-4 bg-[#E8F6FE]">
+                    <div className="px-5 mt-4">
                         <Form
                             form={form}
                             layout="vertical"
@@ -206,19 +209,19 @@ const AddTier = () => {
                                 <Input style={{ width: '100%' }}
 
                                 />
-                            </Form.Item>
+                            </Form.Item> 
                             <Form.Item
                                 name="pricing_type"
                                 label="Pricing type"
                                 rules={[{ required: true, message: 'Please input the price type!' }]}
                             >
-                                <Select name="" id="" style={{ width: '100%' }}>
-                                    <Option >Select</Option>
+                                <Select name="Monthly" id="" style={{ width: '100%' , height:"45px" }}>
+                              
                                     <Option value="Monthly">Monthly</Option>
-                                    <Option value="Yearly">Annually </Option>
                                 </Select>
 
                             </Form.Item>
+
                             <Form.Item
                                 name="duration"
                                 label="Select duration"
@@ -297,7 +300,7 @@ const AddTier = () => {
                                 <Button
                                     type="primary"
                                     htmlType="submit"
-                                    className="mt-[50px] w-[138px] h-[49px] bg-[#1D75F2] text-2xl text-white font-medium"
+                                    className=" w-[100px] h-[42px] bg-[#1D75F2] text-xl text-white font-medium"
                                 >
                                     Submit
                                 </Button>

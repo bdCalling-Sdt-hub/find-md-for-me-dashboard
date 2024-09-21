@@ -84,8 +84,8 @@ const PrivacyPolicy = () => {
             const result = await response.json();
             Swal.fire({
                 icon: 'success',
-                title: result.message,
-                text: 'Description updated successfully',
+                text: result.message,
+          
             });
         } catch (error) {
             Swal.fire({
@@ -103,13 +103,6 @@ const PrivacyPolicy = () => {
 
     const handleSubmit = () => {
         updateDescriptions();
-        Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "About Us Updated Successfully",
-            showConfirmButton: false,
-            timer: 1500
-        });
     }
     return (
         <div className="bg-white shadow-lg rounded-lg p-5 h-[86vh] overflow-auto">
