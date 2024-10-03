@@ -60,7 +60,7 @@ const StandingOrder = ({ data }) => {
             Swal.fire({
                 icon: 'success',
                 title: result.message,
-                text: 'Profile updated successfully',
+             
             });
         } catch (error) {
             Swal.fire({

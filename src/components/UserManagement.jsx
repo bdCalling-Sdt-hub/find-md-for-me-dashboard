@@ -10,7 +10,7 @@ import { IMAGE_URL } from '../main';
 
 const UserManagement = () => {
     const [users, setUsers] = useState([]); 
-//    console.log(users); 
+
     const [tier, setTier] = useState();
     const [loading, setLoading] = useState(true);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -22,8 +22,6 @@ const UserManagement = () => {
     }); 
     
     const [search, setSearch] = useState('');
-   
-   
 
     useEffect(() => {
         fetchUserManagement();
@@ -51,11 +49,12 @@ const UserManagement = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }
-            const result = await response.json();
+            const result = await response.json(); 
+        //   console.log(result);  
             setUsers(result.data);
             
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -81,12 +80,13 @@ const UserManagement = () => {
             });
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
-            }
-            const result = await response.json();
+            } 
+        
+       
                 fetchUserManagement()   
             
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         }  finally {
             setLoading(false);
         }
@@ -116,9 +116,9 @@ const UserManagement = () => {
             }
             const result = await response.json();
             setTier(result);   
-            // console.log(result)          
+            // console.log(result)           
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -155,7 +155,7 @@ const UserManagement = () => {
             });
             fetchUserManagement();
         } catch (error) {
-            console.error('Error updating user status:', error);
+            // console.error('Error updating user status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -194,7 +194,7 @@ const UserManagement = () => {
             fetchUserManagement();
             handleCancel();
         } catch (error) {
-            console.error('Error updating user status:', error);
+            // console.error('Error updating user status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -237,7 +237,7 @@ const UserManagement = () => {
             fetchUserManagement();
             handleCancel();
         } catch (error) {
-            console.error('Error updating user status:', error);
+            // console.error('Error updating user status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -290,7 +290,7 @@ const UserManagement = () => {
             fetchUserManagement();
             handleClientCancel();
         } catch (error) {
-            console.error('Error updating user status:', error);
+            // console.error('Error updating user status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',

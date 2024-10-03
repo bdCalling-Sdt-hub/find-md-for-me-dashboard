@@ -49,10 +49,10 @@ const Team = () => {
             if (Array.isArray(result.data.data)) {
                 setData(result.data.data);
             } else {
-                console.error('Unexpected data format:', result);
+                // console.error('Unexpected data format:', result); 
             }
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -96,7 +96,7 @@ const Team = () => {
             fetchUserData();
             handleCancel();
         } catch (error) {
-            console.error('Error updating document status:', error);
+            // console.error('Error updating document status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -159,7 +159,9 @@ const Team = () => {
 
     const handleStatusChange = (value) => {
         setStatus(value);
-    };
+    }; 
+
+    // console.log(modalData); 
 
     return (
         <div>
@@ -280,20 +282,20 @@ const Team = () => {
                                 </div>
                                 <div className='mt-5 text-[16px] leading-3 font-normal '>  Please provide your license(s)/certificate(s) number(s) </div>
                                 <a href={`${IMAGE_URL_1}${modalData.license_certificate_number}`} target='_blank'>
-                                <div className='w-[100%] h-[44px] bg-white rounded-[10px] p-1 mt-5'>
-                                    <div className='items-center flex text-sm text-[#1DA1F2] font-medium leading-5 pl-5'>
-                                        <TbPhotoSquareRounded /> HannahBusing_Resume.pdf
+                                <div className='w-[100%]  bg-white rounded-[10px] p-1 mt-5'>
+                                    <div className='items-center flex text-md text-[#1DA1F2] font-medium leading-5 pl-5 gap-1 py-2'>
+                                        <TbPhotoSquareRounded  size={22}/> {modalData.license_certificate_number}
                                     </div>
-                                    <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
+                                   
                                 </div>
                                 </a>
                                 <div className='mt-5 text-[16px] leading-3 font-normal '>  Upload additional certificates </div>
                                 <a href={`${IMAGE_URL_1}${modalData.addisional_certificate}`} target='_blank'>
-                                <div className='w-[100%] h-[44px] bg-white rounded-[10px] p-1 mt-5'>
-                                    <div className='items-center flex text-sm text-[#1DA1F2] font-medium leading-5 pl-5'>
-                                        <TbPhotoSquareRounded /> HannahBusing_Resume.pdf
+                                <div className='w-[100%] bg-white rounded-[10px]  mt-5'>
+                                    <div className='items-center flex text-md text-[#1DA1F2] font-medium leading-5 pl-5 gap-1 py-2'>
+                                        <TbPhotoSquareRounded  size={22}/> {modalData.addisional_certificate}
                                     </div>
-                                    <p className='text-[#989692] font-normal leading-5 text-[12px] pl-5'>200 KB</p>
+                              
                                 </div>
                                 </a>
                                 <center>

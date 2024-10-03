@@ -39,7 +39,7 @@ const FaqPage = () => {
             const result = await response.json();
             setEhr(result.data);
         } catch (error) {
-            console.error('Error fetching EHR data:', error);
+            // console.error('Error fetching EHR data:', error); 
         } finally {
             setLoading(false);
         }

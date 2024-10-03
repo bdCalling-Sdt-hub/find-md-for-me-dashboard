@@ -40,7 +40,7 @@ const AdminManagement = () => {
             const result = await response.json();
             setUserData(result?.data || []);
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
             message.error('Error fetching user data');
         } finally {
             setLoading(false);
@@ -163,7 +163,8 @@ const AdminManagement = () => {
         {
             title: 'S.no',
             dataIndex: 'key',
-            key: 'key',
+            key: 'key', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'User',
@@ -190,8 +191,8 @@ const AdminManagement = () => {
             dataIndex: 'id',
             key: 'action',
             render: (id, record) => {
-                const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) == "SUPER ADMIN";
-                // console.log(isSuperAdmin) 
+                const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) === "SUPER ADMIN";
+                // console.log(isSuperAdmin)  
                 return (
                     <>
                         {isSuperAdmin &&

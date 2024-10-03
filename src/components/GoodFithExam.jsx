@@ -39,7 +39,7 @@ const GoodFithExam = () => {
             const result = await response.json();
             setEhr(result.data);
         } catch (error) {
-            console.error('Error fetching faith data:', error);
+            // console.error('Error fetching faith data:', error); 
         } finally {
             setLoading(false);
         }

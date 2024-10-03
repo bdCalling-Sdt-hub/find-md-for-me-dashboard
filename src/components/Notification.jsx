@@ -40,7 +40,7 @@ const Notification = () => {
             setTotalPages(result.total_pages || 1); // Total pages from API
             // console.log(result) 
         } catch (error) {
-            console.error('Error fetching notifications:', error);
+            // console.error('Error fetching notifications:', error); 
             message.error('Error fetching notifications');
         } finally {
             setLoading(false);
@@ -120,7 +120,8 @@ const Notification = () => {
             setNotifications(notifications.map(notification =>
                 notification.id === id ? { ...notification, read_at: new Date().toISOString() } : notification
             ));
-           
+             
+            // console.log(notifications); 
     
             // Swal.fire({
             //     icon: 'success',
@@ -133,7 +134,7 @@ const Notification = () => {
              
     
         } catch (error) {
-            console.error('Error updating notification status:', error);
+            // console.error('Error updating notification status:', error); 
     
             Swal.fire({
                 icon: 'error',
@@ -151,7 +152,7 @@ const Notification = () => {
                     {loading ? (
                         <p>Loading notifications...</p>
                     ) : (
-                        notifications.map(notification => (
+                        notifications.map(notification => (  
                             <div
                                
                                 key={notification.id}
@@ -174,7 +175,7 @@ const Notification = () => {
                                         <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification.created_at).toLocaleDateString()}</span>
                                         <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification.created_at).toLocaleTimeString()}</span>
                                         <div className='text-[#818181] text-[14px] font-medium'>
-                                            {notification.data.new_data.first_name} {notification.data.new_data.last_name}, booking date {new Date(notification.created_at).toLocaleDateString()}.
+                                        {notification?.data?.first_name || notification?.data?.new_data?.first_name} {notification?.data?.last_name || notification?.data?.new_data?.last_name}, booking date {new Date(notification.created_at).toLocaleDateString()}.
                                         </div>
                                     </p>
                                 </div>

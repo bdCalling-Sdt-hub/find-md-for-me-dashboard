@@ -49,7 +49,7 @@ const Sidebar = () => {
             navigate("/auth");
             window.location.reload();
         } catch (error) {
-            console.error('Failed to log out', error);
+            // console.error('Failed to log out', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',

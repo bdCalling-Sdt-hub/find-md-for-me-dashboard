@@ -56,7 +56,7 @@ const Policies = ({ data }) => {
             Swal.fire({
                 icon: 'success',
                 title: result.message,
-                text: 'Profile updated successfully',
+              
             });
         } catch (error) {
             Swal.fire({
@@ -70,12 +70,12 @@ const Policies = ({ data }) => {
     return (
         <div>
             <Form form={form} onFinish={onFinish}>
-                <h1 className='text-[#252B42] text-lg font-medium'>Policies</h1>
+                <h1 className='text-[#252B42] text-lg pb-4 font-semibold'>Policies</h1>
                 {data && data.length > 0 ? (
                     data.map(item => (
-                        <div key={item.id}>
-                            <p className='text-[16px] text-black font-normal leading-3 mt-2'>{item.tyer_name}</p>
-                            <p className='text-[16px] text-black font-normal leading-3 mt-12'>Upload Policies Document</p>
+                        <div key={item.id} className='mb-10'>
+                            <p className='text-[16px] text-black font-normal leading-3 pt-2'>{item.tyer_name}</p>
+                            <p className='text-[16px] text-black font-normal leading-3 py-4'>Upload Policies Document</p>
                             <Form.Item style={{ marginBottom: '24px' }}>
                                 <label
                                     htmlFor={`protocol_${item.id}`}
@@ -87,7 +87,7 @@ const Policies = ({ data }) => {
                                         borderRadius: '18px',
                                         display: 'block',
                                         float: 'left',
-                                        marginTop: '20px',
+                             
                                     }}
                                 >
                                     <div className='flex items-center text-[14px] font-medium text-[#1D75F2] leading-4 p-4'>

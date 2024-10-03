@@ -40,7 +40,7 @@ const EHR = () => {
             const result = await response.json();
             setEhr(result.data);
         } catch (error) {
-            console.error('Error fetching EHR data:', error);
+            // console.error('Error fetching EHR data:', error);
         } finally {
             setLoading(false);
         }
@@ -109,7 +109,8 @@ const EHR = () => {
                     'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(values),
-            });
+            }); 
+            console.log(response);
 
             if (!response.ok) {
                 throw new Error('Failed to save EHR');

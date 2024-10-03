@@ -35,7 +35,7 @@ const CreateForm = () => {
         const result = await response.json();
         setUser(result.user);
       } catch (error) {
-        console.error('Error fetching user data:', error);
+        // console.error('Error fetching user data:', error); 
       } finally {
         setLoading(false);
       }
@@ -89,7 +89,7 @@ const CreateForm = () => {
 
                 <div className="text-[#252B42] text-[18px] font-600">
                   <span style={{ fontWeight: "600" }}>Role</span>
-                  <h1 className="text-[#000000] text-[16px] font-400 w-[180px]">{user.user_type} CEO </h1>
+                  <h1 className="text-[#000000] text-[16px] font-400 w-[180px]">{user.user_type}  </h1>
                 </div>
                 <div className="text-[#252B42] text-[18px] font-600">
                   <span style={{ fontWeight: "600" }}>Email</span>

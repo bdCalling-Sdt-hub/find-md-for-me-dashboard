@@ -18,7 +18,7 @@ const PersonalInfo = () => {
     const [btn, setBtn] = useState('personal');
     const [form] = Form.useForm();
 
-    // console.log("document", document) 
+    // console.log("document", document)   
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -80,7 +80,7 @@ const PersonalInfo = () => {
                 text: 'Document status updated successfully',
             });
         } catch (error) {
-            console.error('Error updating personal status:', error);
+            // console.error('Error updating personal status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -166,27 +166,15 @@ const PersonalInfo = () => {
                                             name="state"
                                             label="What state(s) are you licensed/certified in?"
                                             rules={[{ required: true }]}
-                                        >
-                                            <Row gutter={8} className=' justify-center items-center'>
-                                                <Col flex="auto">
-                                                    <Select
-                                                        style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }}
-                                                        defaultValue={document.state_license_certificate}
-                                                    >
-                                                        <Select.Option value={document.state_license_certificate}>{document.state_license_certificate}</Select.Option>
-                                                    </Select>
-                                                </Col>
-                                                <Col>
-                                                    <Radio value={1}>N/A</Radio>
-                                                </Col>
-                                            </Row>
+                                        > 
+                                          <Input placeholder={document.state_license_certificate} style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }} /> 
                                         </Form.Item>
                                         <Form.Item className='text-[16px] font-medium text-[#737373] m-2'
                                             name="address"
                                             label="Home Mailing Address"
                                             rules={[{ required: true }]}
                                         >
-                                            <Input placeholder={document.address || "Address"} style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }} />
+                                            <Input placeholder={document.mailing_address || "Address"} style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }} />
                                         </Form.Item>
 
                                         <Form.Item className='text-[16px] font-medium text-[#737373] m-2'
@@ -198,7 +186,7 @@ const PersonalInfo = () => {
                                                 <Radio value="yes">Yes</Radio>
                                                 <Radio value="no">No</Radio>
                                             </Radio.Group>
-                                        </Form.Item>
+                                        </Form.Item> 
                                     </Col>
                                     <Col span={12}>
                                         <Form.Item className='text-[16px] font-medium text-[#737373] m-2'

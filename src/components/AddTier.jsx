@@ -45,7 +45,7 @@ const AddTier = () => {
 
             setEhrData(result.data);
         } catch (error) {
-            console.error('Error fetching tier data:', error);
+            // console.error('Error fetching tier data:', error); 
         } finally {
             setLoading(false);
         }
@@ -65,7 +65,7 @@ const AddTier = () => {
         }
 
         //   values?.service = JsonServier
-        console.log(values)
+        // console.log(values) 
         const url = isEditMode ? `${BASE_URL}update-tiear/${currentEhr?.id}` : `${BASE_URL}add-tiear`;
         try {
             const response = await fetch(url, {
@@ -109,7 +109,7 @@ const AddTier = () => {
     };
 
     const openEditModal = (tier) => { 
-        console.log(tier);
+        // console.log(tier); 
         setIsEditMode(true);
 
         setCurrentEhr(tier);

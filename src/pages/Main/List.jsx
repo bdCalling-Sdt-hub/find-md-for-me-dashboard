@@ -41,7 +41,7 @@ const List = () => {
             const result = await response.json();
             setData(result.data);
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -80,7 +80,7 @@ const List = () => {
             return result;
 
         }catch(error){
-            console.error('Error fetching document:', error);
+            // console.error('Error fetching document:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -124,7 +124,7 @@ const List = () => {
             });
             fetchUserData();
         } catch (error) {
-            console.error('Error updating document status:', error);
+            // console.error('Error updating document status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',

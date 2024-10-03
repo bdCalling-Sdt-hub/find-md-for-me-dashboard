@@ -27,7 +27,9 @@ const Profile = () => {
         if (!token) {
             setLoading(false);
             return;
-        }
+        } 
+
+        // console.log(user); 
 
         try {
             const response = await fetch(`${BASE_URL}user`, {
@@ -55,7 +57,7 @@ const Profile = () => {
             setUsertype(userData.user_type);
 
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -324,30 +326,6 @@ const Profile = () => {
                                 placeholder="Enter Business Address"
                             />
                         </Form.Item>
-
-                        {/* <Form.Item
-                            name="user_type"
-                            label={<p className="text-[#415D71] text-sm leading-5 poppins-semibold">User Type</p>}
-                            className='col-span-12'
-                            style={{ marginBottom: 0 }}
-                        >
-                            <select
-                                style={{
-                                    width: "100%",
-                                    height: "42px",
-                                    border: "1px solid #DCDDDE",
-                                    borderRadius: "8px",
-                                    color: "black",
-                                    outline: "none"
-                                }}
-                                value={usertype}
-                                onChange={(e) => setUsertype(e.target.value)}
-                            >
-                                <option value="USER">USER</option>
-                                <option value="ADMIN">ADMIN</option>
-                                <option value="SUPER ADMIN">SUPER ADMIN</option>
-                            </select>
-                        </Form.Item> */}
 
                         <Form.Item
                             className='col-span-12'

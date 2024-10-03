@@ -44,7 +44,7 @@ const AdminVendor = () => {
                 id: user.id,
             })));
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
             message.error('Error fetching user data');
         } finally {
             setLoading(false);
@@ -73,20 +73,20 @@ const AdminVendor = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to delete user');
+                throw new Error('Failed to delete vendor');
             }
 
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'User deleted successfully',
+                text: 'vendor deleted successfully',
             });
             fetchUserData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to delete user',
+                text: 'Failed to delete vendor',
             });
         }
     };
@@ -114,20 +114,20 @@ const AdminVendor = () => {
             });
 
             if (!response.ok) {
-                throw new Error('Failed to add admin');
+                throw new Error('Failed to add vendor');
             }
 
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Admin added successfully',
+                text: 'Vendor added successfully',
             });
             fetchUserData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to add admin',
+                text: 'Failed to add vendor',
             });
         }
     };
@@ -166,7 +166,8 @@ const AdminVendor = () => {
         {
             title: 'S.no',
             dataIndex: 'key',
-            key: 'key',
+            key: 'key', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'State name',
@@ -185,7 +186,7 @@ const AdminVendor = () => {
 
     const handleMenuClick = (e) => {
         message.info(`Clicked on menu item ${e.key}`);
-        console.log('Clicked on', e); 
+        // console.log('Clicked on', e);  
     };
 
     return (
@@ -207,7 +208,7 @@ const AdminVendor = () => {
             <Modal open={isDeleteModalOpen} onCancel={handleCancel} footer={null}>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#E8F6FE]">
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <h2>Are you sure you want to delete this user?</h2>
+                        <h2>Are you sure you want to delete this vendor?</h2>
                         <div className="flex justify-end gap-4 mt-4">
                             <Button onClick={handleCancel}>Cancel</Button>
                             <Button type="primary" onClick={handleDeleteConfirm}>Yes</Button>

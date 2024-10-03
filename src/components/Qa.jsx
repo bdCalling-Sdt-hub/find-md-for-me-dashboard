@@ -47,7 +47,7 @@ const Qa = () => {
                 id: user.id,
             })));
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
             message.error('Error fetching user data');
         } finally {
             setLoading(false);
@@ -274,7 +274,7 @@ const Qa = () => {
                         name="description"
                         rules={[{ required: true, message: 'Please input description!' }]}
                     >
-                        <textarea rows={6} cul placeholder='Write here' className='p-2 rounded-[10px]' cols={60} />
+                        <textarea rows={6} cul placeholder='Write here' className='p-2 rounded-[10px] w-full' /> 
                     </Form.Item>
                     <Form.Item>
                        <center> <Button   className='w-[138px] h-[49px] bg-[#C738BD] text-2xl text-white font-medium justify-center m-auto' htmlType="submit">Submit</Button></center>

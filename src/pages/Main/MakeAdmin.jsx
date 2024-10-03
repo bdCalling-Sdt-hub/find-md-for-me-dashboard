@@ -54,7 +54,7 @@ const MakeAdmin = () => {
                 total: result.data.total,
             });
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
         }
@@ -89,7 +89,7 @@ const MakeAdmin = () => {
             const result = await response.json();
             return result.data;
         } catch (error) {
-            console.error('Error fetching document:', error);
+            // console.error('Error fetching document:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -140,7 +140,7 @@ const MakeAdmin = () => {
             });
             fetchClientDocument(pagination.current);
         } catch (error) {
-            console.error('Error updating document status:', error);
+            // console.error('Error updating document status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -187,7 +187,8 @@ const MakeAdmin = () => {
         {
             title: 'S.no',
             dataIndex: 'id',
-            key: 'id',
+            key: 'id', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'User',

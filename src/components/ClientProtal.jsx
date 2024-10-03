@@ -40,7 +40,7 @@ const ClientProtal = () => {
                 setDocument(result);// Set document directly if result contains the user data
             //    console.log(document) 
             } catch (error) {
-                console.error('Error fetching document:', error);
+                // console.error('Error fetching document:', error); 
             }
         };
         fetchDocument();

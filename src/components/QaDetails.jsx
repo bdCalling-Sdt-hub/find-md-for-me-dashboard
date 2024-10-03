@@ -32,7 +32,7 @@ const QaDetails = () => {
                 // console.log( result) 
                 setDocument(result.data);
             } catch (error) {
-                console.error('Error fetching document:', error);
+                // console.error('Error fetching document:', error); 
             } finally {
                 setLoading(false);
             }

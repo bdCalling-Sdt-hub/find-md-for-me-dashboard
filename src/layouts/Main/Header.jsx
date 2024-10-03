@@ -32,7 +32,7 @@ const Header = () => {
                 setUser(result);
 
             } catch (error) {
-                console.error('Error fetching user data:', error);
+                // console.error('Error fetching user data:', error); 
             } finally {
                 setLoading(false);
             }

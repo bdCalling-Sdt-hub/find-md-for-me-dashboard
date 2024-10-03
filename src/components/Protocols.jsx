@@ -60,14 +60,14 @@ const Protocols = ({ data }) => {
             Swal.fire({
                 icon: 'success',
                 title: result.message,
-                text: 'Profile updated successfully',
+               
             });
         } catch (error) { 
             // console.log(`error ${error}`); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: error.message || 'Failed to update profile',
+                text: error.message || 'Failed to update Tier',
             });
         }
     };
@@ -75,12 +75,12 @@ const Protocols = ({ data }) => {
 
     return (
         <Form form={form} onFinish={onFinish}>
-            <h1 className='text-[#252B42] text-lg font-medium'>Protocols</h1>
+            <h1 className='text-[#252B42] text-lg pb-4 font-semibold'>Protocols</h1>
             {data && data.length > 0 ? (
                 data.map(item => (
-                    <div key={item.id}>
-                        <p className='text-[16px] text-black font-normal leading-3 mt-2'>{item.tyer_name}</p>
-                        <p className='text-[16px] text-black font-normal leading-3 mt-12'>Upload Protocols Document</p>
+                    <div key={item.id} className='mb-10'>
+                        <p className='text-[16px] text-black font-normal leading-3 pt-2'>{item.tyer_name}</p>
+                        <p className='text-[16px] text-black font-normal leading-3 py-4'>Upload Protocols Document</p>
                         <Form.Item style={{ marginBottom: '24px' }}>
                             <label
                                 htmlFor={`protocol_${item.id}`}
@@ -92,7 +92,7 @@ const Protocols = ({ data }) => {
                                     borderRadius: '18px',
                                     display: 'block',
                                     float: 'left',
-                                    marginTop: '20px',
+                                
                                 }}
                             >
                                 <div className='flex items-center text-[14px] font-medium text-[#1D75F2] leading-4 p-4'>

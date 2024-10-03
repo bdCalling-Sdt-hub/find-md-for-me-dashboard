@@ -38,7 +38,7 @@ const PrivacyPolicy = () => {
                 setContent(result.data.description);
                 setId(result.data.id);  // Set ID if data exists
             } catch (error) {
-                console.error('Error fetching user data:', error);
+                // console.error('Error fetching user data:', error); 
             } finally {
                 setLoading(false);
             }

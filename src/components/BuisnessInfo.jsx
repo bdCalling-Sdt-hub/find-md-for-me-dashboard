@@ -63,7 +63,7 @@ const BusinessInfo = ({ data }) => {
             });
 
         } catch (error) {
-            console.error('Error updating document status:', error);
+            // console.error('Error updating document status:', error); 
 
             Swal.fire({
                 icon: 'error',
@@ -130,7 +130,7 @@ const BusinessInfo = ({ data }) => {
                                 rules={[{ required: true, message: 'Please indicate if registered with Secretary of State' }]}
                             >
                                 <Radio.Group>
-                                    <Radio value="yes">Yes</Radio>
+                                    <Radio value="yes" >Yes</Radio>
                                     <Radio value="no">No</Radio>
                                 </Radio.Group>
                             </Form.Item>

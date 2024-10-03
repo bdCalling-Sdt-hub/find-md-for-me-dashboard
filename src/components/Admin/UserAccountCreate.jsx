@@ -45,7 +45,7 @@ const UserAccountCreate = () => {
                
             
         } catch (error) {
-            console.error('Error fetching user data:', error);
+            // console.error('Error fetching user data:', error); 
             message.error('Error fetching user data');
         } finally {
             setLoading(false);
@@ -170,7 +170,8 @@ const UserAccountCreate = () => {
         {
             title: 'S.no',
             dataIndex: 'key',
-            key: 'key',
+            key: 'key', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'User',

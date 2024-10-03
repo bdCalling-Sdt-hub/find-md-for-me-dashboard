@@ -33,7 +33,7 @@ const PrivateRoute = ({ children }) => {
         
 
       } catch (error) {
-        console.error("Failed to fetch user:", error);
+        // console.error("Failed to fetch user:", error);  
       } finally {
         setLoading(false);
       }

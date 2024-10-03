@@ -74,16 +74,17 @@ const StatutesCovared = () => {
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }
-            const result = await response.json();
-            setUserData(result.data.map((user, index) => ({
+            const result = await response.json(); 
+            // console.log(result); 
+            setUserData(result.map((user, index) => ({
                 key: index + 1,
                 user: user.state_name,
                
                 id: user.id,
             })));
         } catch (error) {
-            console.error('Error fetching user data:', error);
-            message.error('Error fetching user data');
+           
+         
         } finally {
             setLoading(false);
         }
@@ -208,7 +209,8 @@ const StatutesCovared = () => {
         {
             title: 'S.no',
             dataIndex: 'key',
-            key: 'key',
+            key: 'key', 
+            render:(_,record , index)=><p>{index+1}</p>
         },
         {
             title: 'State name',

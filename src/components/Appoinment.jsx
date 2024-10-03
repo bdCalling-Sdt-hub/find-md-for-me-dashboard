@@ -39,7 +39,7 @@ const Appoinment = ({data, parsonalData}) => {
             });
 
         }catch(error){
-            console.error('Error updating document status:', error);
+            // console.error('Error updating document status:', error); 
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
@@ -74,24 +74,18 @@ const Appoinment = ({data, parsonalData}) => {
                     autoComplete="off"
                 >
                     
-                    <div className='flex flex-1 items-center justify-between text-[#252B42] text-[16px] font-normal  leading-6 p-10'>
+                    <div className='flex flex-1  justify-between text-[#252B42] text-[16px] font-normal  leading-6 p-10'>
                         <div>
-                            <h1 className='mt-3'>Name</h1>
-                            <h1 className='mt-3'>Eamil</h1>
-                            <h1 className='mt-3'>Contact</h1>
-                            <h1 className='mt-3'>Address</h1>
+                            <h1 className='mt-3'>Name:</h1>
+                            <h1 className='mt-3'>Email:</h1>
+                            <h1 className='mt-3'>Contact:</h1>
                             
-                            <h1 className='mt-3'>Appointment Date</h1>
-                            <h1 className='mt-3'>Appointment Time</h1>
+                
                         </div>
                         <div className='text-right'>
                             <h1 className='mt-3'>{parsonalData.first_name +  ' ' + parsonalData.last_name}</h1>
                             <h1 className='mt-3'>{parsonalData.email}</h1>
-                            <h1 className='mt-3'>{parsonalData.phone}</h1>
-                            <h1 className='mt-3'>{parsonalData.address}</h1>
-                            
-                            <h1 className='mt-3'>{data?.date}</h1>
-                            <h1 className='mt-3'>{data?.time}</h1>
+                            <h1 className='mt-3'>{parsonalData.phone}</h1>         
                         </div>
                     </div>
 
