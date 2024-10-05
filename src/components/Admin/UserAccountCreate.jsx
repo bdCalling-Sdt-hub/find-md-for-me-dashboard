@@ -13,7 +13,7 @@ const UserAccountCreate = () => {
     const [isAddAdminModalOpen, setIsAddAdminModalOpen] = useState(false);
     const [deleteUserId, setDeleteUserId] = useState(null);
     const [form] = Form.useForm();
-    // console.log(userData) 
+    // console.log(userData)   
     useEffect(() => {
         fetchUserData();
     }, []);
@@ -202,8 +202,10 @@ const UserAccountCreate = () => {
             title: 'Action',
             dataIndex: 'id',
             key: 'action',
-            render: (id) => (
-                userData.user_type === "SUPER ADMIN" ? (
+            render: (id) => { 
+                const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) === "SUPER ADMIN";
+                return( 
+                    isSuperAdmin ? (
                     <RiDeleteBinLine 
                         className='cursor-pointer text-[16px]' 
                         onClick={() => showDeleteModal(id)} 
@@ -214,7 +216,7 @@ const UserAccountCreate = () => {
                         onClick={(e) => e.preventDefault()} 
                     />
                 )
-            ),
+             ) },
         },
     ];
 

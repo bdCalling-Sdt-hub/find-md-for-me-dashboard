@@ -153,17 +153,7 @@ const MakeAdmin = () => {
         return <div>Loading ...</div>;
     }
 
-    // if (!clientDocument.length) {
-    //     return <div>No user data available</div>;
-    // }
-
-    const onFinish = () => {
-        message.success('Submit success!');
-    };
-
-    const onFinishFailed = () => {
-        message.error('Submit failed!');
-    };
+    
 
     const handleMenuClick = async (key, userId) => {
         if (key === '1') {

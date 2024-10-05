@@ -11,7 +11,7 @@ const ClientDocumentView = () => {
     // console.log('params id:' + userId);
     const [document, setDocument] = useState(null);
     const [loading, setLoading] = useState(true);
-    console.log(document);  
+    // console.log(document);   
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -101,7 +101,7 @@ const ClientDocumentView = () => {
         <div>
             <div className='flex '>
                 <Link to='/client-document'><span className='text-3xl font-bold'><PiArrowLeftFill /> </span></Link>
-                <img className='w-[150px] h-[150px] rounded-full m-auto border border-gray-400' src={IMAGE_URL+document?.user?.image || 'https://t4.ftcdn.net/jpg/02/15/84/43/360_F_215844325_ttX9YiIIyeaR7Ne6EaLLjMAmy4GvPC69.jpg'} alt=''  />
+                <img className='w-[150px] h-[150px] rounded-full m-auto border border-gray-400' src={`${IMAGE_URL_1}${document?.user?.image}`} alt=''  />
             </div>
             <div className=' w-[40%] m-auto flex flex-1 items-center justify-between text-[#252B42] text-[16px] font-normal  leading-6 p-10'>
                 <div>

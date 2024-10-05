@@ -11,8 +11,8 @@ const AdminManagement = () => {
     const [isAddAdminModalOpen, setIsAddAdminModalOpen] = useState(false);
     const [deleteUserId, setDeleteUserId] = useState(null);
     const [form] = Form.useForm();
-    const defaultImg = "https://i.pinimg.com/564x/57/e4/7f/57e47fa25cab8a9b49aca903bfa049a8.jpg";
 
+    // console.log(userData); 
     useEffect(() => {
         fetchUserData();
     }, []);
@@ -75,14 +75,14 @@ const AdminManagement = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'User deleted successfully',
+                text: 'Admin deleted successfully',
             });
             fetchUserData();
         } catch (error) {
             Swal.fire({
                 icon: 'error',
                 title: 'Error',
-                text: 'Failed to delete user',
+                text: 'Failed to delete Admin',
             });
         }
     };
@@ -194,14 +194,17 @@ const AdminManagement = () => {
                 const isSuperAdmin = JSON.parse(localStorage.getItem('user_type')) === "SUPER ADMIN";
                 // console.log(isSuperAdmin)  
                 return (
-                    <>
-                        {isSuperAdmin &&
-                            <RiDeleteBinLine
-                                className='cursor-pointer text-[16px]'
-                                onClick={() => showDeleteModal(id)}
-                            />
-                      }
-                    </>
+                    isSuperAdmin ? (
+                        <RiDeleteBinLine 
+                            className='cursor-pointer text-[16px]' 
+                            onClick={() => showDeleteModal(id)} 
+                        />
+                    ) : (
+                        <RiDeleteBinLine 
+                            className='text-[16px] text-gray-400 cursor-not-allowed' 
+                            onClick={(e) => e.preventDefault()} 
+                        />
+                    )
                 );
             }
         },
@@ -223,7 +226,7 @@ const AdminManagement = () => {
             <Modal open={isDeleteModalOpen} onCancel={handleCancel} footer={null}>
                 <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8 bg-[#E8F6FE]">
                     <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-                        <h2>Are you sure you want to delete this user?</h2>
+                        <h2>Are you sure you want to delete this admin?</h2>
                         <div className="flex justify-end gap-4 mt-4">
                             <Button onClick={handleCancel}>Cancel</Button>
                             <Button type="primary" onClick={handleDeleteConfirm}>Yes</Button>

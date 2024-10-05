@@ -19,7 +19,9 @@ const UserManagement = () => {
     const [besinessData, setBesinessData] = useState({
         tier_service_interrested : "",
         client_type : ""
-    }); 
+    });  
+
+    // console.log(selectedUser); 
     
     const [search, setSearch] = useState('');
 

@@ -109,8 +109,7 @@ const EHR = () => {
                     'Authorization': `Bearer ${token}`,
                 },
                 body: JSON.stringify(values),
-            }); 
-            console.log(response);
+            });          
 
             if (!response.ok) {
                 throw new Error('Failed to save EHR');

@@ -12,7 +12,8 @@ const List = () => {
     const [form] = Form.useForm();
     const [data, setData] = useState([]); 
     const [loading, setLoading] = useState(false);
-    const [search, setSearch] = useState('');
+    const [search, setSearch] = useState(''); 
+
 
     const fetchUserData = async () => {
         const token = JSON.parse(localStorage.getItem('token'));
@@ -21,7 +22,6 @@ const List = () => {
             return;
         }
         try {
-           
             setLoading(true);
             const params = new URLSearchParams();
             if (search) params.append("search", search);
@@ -34,13 +34,15 @@ const List = () => {
                     'Authorization': `Bearer ${token}`,
                 },
             });
+            
             if (!response.ok) {
                 throw new Error('Failed to fetch user data');
             }
-
+            
             const result = await response.json();
-            setData(result.data);
+            setData(result.data); 
         } catch (error) {
+            setData([]); 
             // console.error('Error fetching user data:', error); 
         } finally {
             setLoading(false);
