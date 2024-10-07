@@ -45,7 +45,7 @@ const AdminVendor = () => {
             })));
         } catch (error) {
             // console.error('Error fetching user data:', error); 
-            message.error('Error fetching user data');
+          
         } finally {
             setLoading(false);
         }
@@ -122,7 +122,8 @@ const AdminVendor = () => {
                 title: 'Success',
                 text: 'Vendor added successfully',
             });
-            fetchUserData();
+            fetchUserData(); 
+            form.resetFields("")
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -170,7 +171,7 @@ const AdminVendor = () => {
             render:(_,record , index)=><p>{index+1}</p>
         },
         {
-            title: 'State name',
+            title: 'Vendor name',
             dataIndex: 'user',
             key: 'user',
         },

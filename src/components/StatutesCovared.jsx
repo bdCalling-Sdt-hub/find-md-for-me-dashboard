@@ -162,7 +162,8 @@ const StatutesCovared = () => {
                 title: 'Success',
                 text: 'State added successfully',
             });
-            fetchUserData();
+            fetchUserData(); 
+            form.resetFields("")
         } catch (error) {
             Swal.fire({
                 icon: 'error',

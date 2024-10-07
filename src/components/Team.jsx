@@ -111,7 +111,8 @@ const Team = () => {
         {
             title: 'S.no',
             dataIndex: 'id',
-            key: 'id',
+            key: 'id', 
+            render:(_, record ,index)=><p>{index+1}</p>
         },
         {
             title: 'User',

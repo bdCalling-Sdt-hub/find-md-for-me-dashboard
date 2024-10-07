@@ -82,7 +82,7 @@ const Qa = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'User deleted successfully',
+                text: 'QA deleted successfully',
             });
             fetchUserData();
         } catch (error) {
@@ -127,9 +127,10 @@ const Qa = () => {
             Swal.fire({
                 icon: 'success',
                 title: 'Success',
-                text: 'Admin added successfully',
+                text: 'QA added successfully',
             });
-            fetchUserData();
+            fetchUserData(); 
+            form.resetFields("")
         } catch (error) {
             Swal.fire({
                 icon: 'error',
@@ -178,7 +179,8 @@ const Qa = () => {
         {
             title: 'S.no',
             dataIndex: 'key',
-            key: 'key',
+            key: 'key', 
+            render:(_,record,index)=><p>{index+1}</p>
         },
         {
             title: 'Clients Email',

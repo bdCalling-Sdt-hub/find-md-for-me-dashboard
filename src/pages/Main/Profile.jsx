@@ -188,10 +188,10 @@ const Profile = () => {
                     </div>
                 </div>
 
-                <div className='flex items-center justify-center rounded-lg p-6'>
+                <div className='flex items-center justify-center rounded-lg p-6 '>
                     <Form
                         layout="vertical"
-                        className='grid grid-cols-12 gap-6'
+                        className='grid grid-cols-12 gap-6 w-[841px]'
                         onFinish={handleFormSubmit}
                         initialValues={{
                             first_name: firstname,

@@ -21,7 +21,7 @@ const UserManagement = () => {
         client_type : ""
     });  
 
-    // console.log(selectedUser); 
+ 
     
     const [search, setSearch] = useState('');
 
@@ -251,8 +251,8 @@ const UserManagement = () => {
 
     // Update Client type in admin //
 
-        const updateClientType = async (id, value) => { 
-           // console.log(id,value) 
+        const updateClientType = async (id, value) => {  
+
             // const tier_service_interrested=  value?.business_data?.tier_service_interrested 
             // const client_type =  value?.business_data?.client_type 
             // const id = value?.business_data?.id 
@@ -340,7 +340,7 @@ const UserManagement = () => {
 
     const options1 = tier ? tier?.map(item => ({
         label: item.tyer_name,  
-        value: item.id,          
+        value: item.tyer_name,          
     })) : [];
 
     const handleChange = (value) => {
@@ -544,8 +544,8 @@ const UserManagement = () => {
                                         <h1 className='mt-3'>Name</h1>
                                         <h1 className='mt-3'>Email</h1>
                                         <h1 className='mt-3'>Contact</h1>
-                                        <h1 className='mt-3'>Bisness Name</h1>
-                                        <h1 className='mt-3'>Bisness Address</h1>
+                                        <h1 className='mt-3'>Business Name</h1>
+                                        <h1 className='mt-3'>Business Address</h1>
                                         <h1 className='mt-3'>Tier Name</h1>
                                         <h1 className='mt-3'>Client Type</h1>
 
@@ -556,7 +556,7 @@ const UserManagement = () => {
                                         <h1 className='mt-3'>{selectedUser?.user?.phone || "Empty "}</h1>
                                         <h1 className='mt-3'>{selectedUser?.user?.buisness_name || " Empty"}</h1>
                                         <h1 className='mt-3'>{selectedUser?.user?.buisness_address || "Empty "}</h1>
-                                        <h1 className='mt-3'>{selectedUser?.tier_data?.tyer_name || "Empty "}</h1>
+                                        <h1 className='mt-3'>{selectedUser?.business_data?.tier_service_interrested || "Empty "}</h1>
                                         <h1 className='mt-3'>{selectedUser?.business_data?.client_type || " Empty"}</h1>
                                     </div>
                                 </div>
