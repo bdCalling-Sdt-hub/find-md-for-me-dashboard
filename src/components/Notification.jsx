@@ -8,7 +8,7 @@ const Notification = () => {
     const [loading, setLoading] = useState(true);
     const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-    const [perPage] = useState(10); // Number of items per page
+    const [perPage] = useState(10);  
 
     useEffect(() => {
         fetchNotifications(currentPage);
@@ -36,8 +36,8 @@ const Notification = () => {
             }
 
             const result = await response.json();
-            setNotifications(result.data || []);
-            setTotalPages(result.total_pages || 1); // Total pages from API
+            setNotifications(result?.data || []);
+            setTotalPages(result?.total_pages || 1); // Total pages from API
             // console.log(result) 
         } catch (error) {
             // console.error('Error fetching notifications:', error); 
@@ -46,53 +46,6 @@ const Notification = () => {
             setLoading(false);
         }
     };
-
-    // const rereadAt = async (id) => {
-    //     const token = JSON.parse(localStorage.getItem('token'));
-    //     if (!token) {
-    //         message.error('Unauthorized');
-    //         return;
-    //     }
-
-    //     try {
-    //         const response = await fetch(`${BASE_URL}update-notification/${id}`, {
-    //             method: 'GET',
-    //             headers: {
-    //                 'Content-Type': 'application/json',
-    //                 'Accept': 'application/json',
-    //                 'Authorization': `Bearer ${token}`,
-    //             },
-    //         });
-
-    //         if (!response.ok) {
-    //             throw new Error('Failed to update notification status');
-    //         }
-
-    //         // Update the notification status locally
-    //         setNotifications(notifications.map(notification =>
-    //             notification.id === id ? { ...notification, read_at: new Date().toISOString() } : notification
-    //         ));
-
-    //         Swal.fire({
-    //             icon: 'success',
-    //             title: 'Success',
-    //             text: 'Notification marked as read',
-    //         });
-
-    //         notification.message === 'Uploaded new document'
-    //         ? navigate('/client-document')
-    //         : navigate('/total-list')
-
-    //     } catch (error) {
-    //         console.error('Error updating notification status:', error);
-
-    //         Swal.fire({
-    //             icon: 'error',
-    //             title: 'Error',
-    //             text: 'Failed to update notification status',
-    //         });
-    //     }
-    // };
     const navigate = useNavigate();
     const rereadAt = async (id) => {
         const token = localStorage.getItem('token');
@@ -119,19 +72,7 @@ const Notification = () => {
             // Update the notification status locally
             setNotifications(notifications.map(notification =>
                 notification.id === id ? { ...notification, read_at: new Date().toISOString() } : notification
-            ));
-             
-            // console.log(notifications); 
-    
-            // Swal.fire({
-            //     icon: 'success',
-            //     title: 'Success',
-            //     text: 'Notification marked as read',
-            // });
-    
-        
-
-             
+            ));  
     
         } catch (error) {
             // console.error('Error updating notification status:', error); 
@@ -157,7 +98,7 @@ const Notification = () => {
                                
                                 key={notification.id}
                                 onClick={() => {
-                                    rereadAt(notification.id).then(res=>{
+                                    rereadAt(notification?.id).then(res=>{
                                         notification?.data?.message === 'Uploaded new document'
                                         ? navigate('/client-document')
                                         : navigate('/total-list');
@@ -167,13 +108,13 @@ const Notification = () => {
                             >
                                
                                 <div
-                                    className={`p-4 rounded-lg text-[#707070] leading-6 text-[16px] font-medium mb-4 ${notification.read_at ? 'bg-[#F9F9F9]' : 'bg-[#E9EFFA]'}`}
+                                    className={`p-4 rounded-lg text-[#707070] leading-6 text-[16px] font-medium mb-4 ${notification?.read_at ? 'bg-[#F9F9F9]' : 'bg-[#E9EFFA]'}`}
                                     style={{ boxShadow: 'rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px' }}
                                 >
                                     <p className='text-[#555555] text-base leading-6 poppins-medium text-[16px] font-medium'>
-                                        {notification.data.message}
-                                        <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification.created_at).toLocaleDateString()}</span>
-                                        <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification.created_at).toLocaleTimeString()}</span>
+                                        {notification?.data?.message}
+                                        <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification?.created_at).toLocaleDateString()}</span>
+                                        <span className='ml-5 text-[#A7A7A7] text-[14px] font-medium'>{new Date(notification?.created_at).toLocaleTimeString()}</span>
                                         <div className='text-[#818181] text-[14px] font-medium'>
                                         {notification?.data?.first_name || notification?.data?.new_data?.first_name} {notification?.data?.last_name || notification?.data?.new_data?.last_name}, booking date {new Date(notification.created_at).toLocaleDateString()}.
                                         </div>
