@@ -295,6 +295,7 @@ const AdminManagement = () => {
                                 label="Confirm password"
                                 rules={[
                                     { required: true, message: 'Please confirm the admin password!' },
+                                        { min: 6, message: 'Password must be at least 6 characters long!' },
                                     ({ getFieldValue }) => ({
                                         validator(_, value) {
                                             if (!value || getFieldValue('password') === value) {

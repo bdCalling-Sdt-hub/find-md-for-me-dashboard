@@ -293,7 +293,10 @@ const UserAccountCreate = () => {
                             <Form.Item
                                 name="password"
                                 label="Password"
-                                rules={[{ required: true, message: 'Please input the admin password!' }]}
+                                rules={[
+                                    { required: true, message: 'Please input the admin password!' },
+                                    { min: 6, message: 'Password must be at least 6 characters long!' },
+                                ]}
                             >
                                 <input
                                     type="password"
