@@ -414,7 +414,7 @@ const UserManagement = () => {
             dataIndex: 'status',
             key: 'status',
             render: (text, record) => {
-                return record?.user ? record.user?.status : 'No Updates';
+                return <div className='capitalize'> {record?.user ? record.user?.status : 'No Updates'} </div> 
             },
 
         },
@@ -440,7 +440,8 @@ const UserManagement = () => {
         borderRadius:"10px" ,
         color:"white" ,  
         backgroundColor: record?.user?.another_status === "disable" ? "#1D75F2" : "#C738BD"
-         }}> 
+         }} 
+         className='capitalize'> 
          {record?.user?.another_status ?  record?.user?.another_status : "No Status"}
          </Button>
 

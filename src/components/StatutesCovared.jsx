@@ -3,6 +3,7 @@ import { Button, Form, message, Row, Col, Table, Modal } from 'antd';
 import { RiDeleteBinLine } from "react-icons/ri";
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
+import Heading from './Heading';
 //const BASE_URL = 'http://192.168.30.199:3000/api/';
 const handleMenuClick = (e) => {
     message.info(`Clicked on menu item ${e.key}`);
@@ -234,8 +235,9 @@ const StatutesCovared = () => {
 
             <Row>
                 <Col span={24}>
-                    <div className="flex justify-between items-center p-5 bg-[#ffffff]">
-                        <h1 className='text-[#333333] text-[18px] font-medium p-1 w-full'>States Covered</h1>
+                    <div className="flex justify-between items-center p-5 bg-[#ffffff]"> 
+                    <Heading title={"States Covered"} style={"text-left "} />
+                    
                         <Button onClick={openAddAdminModal} style={{ color: '#fcfcfc' }} className='font-normal text-sm ' type="primary" >
                             + Add State
                         </Button>

@@ -8,6 +8,7 @@ import AppointmentInfo from '../components/Appoinment';
 import BuisnessInfo from '../components/BuisnessInfo';
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
+import moment from 'moment';
 
 
 const PersonalInfo = () => {
@@ -151,7 +152,7 @@ const PersonalInfo = () => {
                                             rules={[{ required: true }]}
                                         >
                                             <Input
-                                                placeholder={document.dob}
+                                                placeholder={moment(document.dob).format('MMM D YYYY')}
                                                 style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }}
                                             />
                                         </Form.Item>

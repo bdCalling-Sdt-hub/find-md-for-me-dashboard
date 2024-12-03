@@ -165,7 +165,7 @@ const List = () => {
             dataIndex: 'first_name',
             key: 'first_name',
             render: (value, record) => (
-                <div className='flex gap-2'>
+                <div className='flex gap-2 capitalize'>
                    
                     <h1>{value} {record.last_name}</h1>
                 </div>
@@ -179,7 +179,12 @@ const List = () => {
         {
             title: 'Status',
             dataIndex: 'status',
-            key: 'status',
+            key: 'status', 
+            render  : (_, record) => (
+                <div className='capitalize'>
+                    <h1>{record?.status}</h1>
+                </div>
+            ),
         },
         {
             title: 'Action',

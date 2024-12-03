@@ -119,7 +119,7 @@ const Team = () => {
             dataIndex: 'first_name',
             key: 'first_name',
             render: (text, record) => (
-                <div className='flex gap-2'>                   
+                <div className='flex gap-2 capitalize'>                   
                     <h1>{`${record?.user?.first_name || "Empty"} ${record?.user?.last_name || ""}`}</h1>
                 </div>
             ),
@@ -137,8 +137,13 @@ const Team = () => {
         {
             title: 'Status',
             dataIndex: 'status',
-            key: 'status',
-        },
+            key: 'status', 
+            render  : (_, record) => (
+                <div className='capitalize'>
+                    <h1>{record?.status}</h1>
+                </div>
+            ),
+        }, 
         {
             title: 'Check',
             dataIndex: 'action',

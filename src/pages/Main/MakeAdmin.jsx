@@ -8,6 +8,7 @@ import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../../main';
 import { IoIosSearch } from "react-icons/io";
+import { render } from 'react-dom';
 const MakeAdmin = () => {
     const [clientDocument, setClientDocument] = useState([]); 
     // console.log(clientDocument); 
@@ -187,7 +188,7 @@ const MakeAdmin = () => {
             render: (text, record) => {
                 const user = record.user || {}; // Fallback to an empty object if user is null or undefined
                 return (
-                    <div className='flex gap-2'>
+                    <div className='flex gap-2 capitalize'>
                       
                         <h1>{`${user.first_name || ''} ${user.last_name || ''}`}</h1>
                     </div>
@@ -202,7 +203,12 @@ const MakeAdmin = () => {
         {
             title: 'Status',
             dataIndex: 'status',
-            key: 'status',
+            key: 'status', 
+            render  : (_, record) => (
+                <div className='capitalize'>
+                    <h1>{record?.status}</h1>
+                </div>
+            ),
         },
         {
             title: 'Check',
@@ -216,10 +222,7 @@ const MakeAdmin = () => {
         },
     ];
 
-    const data = clientDocument.map((doc, index) => ({
-        ...doc,
-        key: index,
-    }));
+
 
     const handleStatusChange = (value) => {
         setStatus(value);

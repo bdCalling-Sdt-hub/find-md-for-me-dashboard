@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import { PiArrowLeftFill } from "react-icons/pi";
 import { Button, Form, Row, Col, message } from 'antd';
 import { TbPhotoSquareRounded } from "react-icons/tb";
 import { Link, useParams } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import { BASE_URL, IMAGE_URL_1 } from '../main';
-import { IMAGE_URL } from '../main';
+
 const ClientDocumentView = () => {
     let { userId } = useParams();
     // console.log('params id:' + userId);

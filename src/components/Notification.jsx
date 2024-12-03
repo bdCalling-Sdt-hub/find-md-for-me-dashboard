@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Button, message, Pagination } from 'antd';
+import {  message, Pagination } from 'antd';
 import Swal from 'sweetalert2';
 import { BASE_URL } from '../main';
 import { useNavigate } from 'react-router-dom';
@@ -72,7 +72,9 @@ const Notification = () => {
             // Update the notification status locally
             setNotifications(notifications.map(notification =>
                 notification.id === id ? { ...notification, read_at: new Date().toISOString() } : notification
-            ));  
+            ));   
+
+            fetchNotifications(currentPage)
     
         } catch (error) {
             // console.error('Error updating notification status:', error); 

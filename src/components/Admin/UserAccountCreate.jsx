@@ -180,7 +180,7 @@ const UserAccountCreate = () => {
             render(text, item){
                
                 return(
-                    <div>
+                    <div className='capitalize'>
                         {item?.first_name} {item?.last_name}
                     </div>
                 );

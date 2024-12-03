@@ -4,44 +4,46 @@ import { BASE_URL, IMAGE_URL } from '../../main';
 
 const Header = () => {
     const [user, setUser] = useState(null);
-    // console.log(user); 
-    const [loading, setLoading] = useState(true)
+    const [loading, setLoading] = useState(true);
+   
+
+    const fetchUserData = async () => {
+        const token = JSON.parse(localStorage.getItem('token'));
+        if (!token) {
+            setLoading(false);
+            return;
+        }
+        try {
+            const response = await fetch(`${BASE_URL}user`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json',
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+            if (!response.ok) {
+                throw new Error('Failed to fetch user data');
+            }
+            const result = await response.json();
+            setUser(result);
+        } catch (error) {
+            console.error('Error fetching user data:', error);
+        } finally {
+            setLoading(false);
+            fetchUserData();
+        }
+    };
+
     useEffect(() => {
-        const fetchUserData = async () => {
-            const token = JSON.parse(localStorage.getItem('token'));
-            if (!token) {
-                setLoading(false);
-                return;
-            }
-            try {
-                const response = await
-                    fetch(`${BASE_URL}user`, {
-                        method: 'GET',
-                        headers: {
-                            'Content-Type': 'application/json',
-                            'Accept': 'application/json',
-                            'Authorization': `Bearer ${token}`,
-                        },
-                    });
-                if (!response.ok) {
-                    throw new Error('Failed to fetch user data');
-
-                }
-                const result = await response.json();
-                // console.log(result) 
-                setUser(result);
-
-            } catch (error) {
-                // console.error('Error fetching user data:', error); 
-            } finally {
-                setLoading(false);
-            }
-        };
         fetchUserData();
     }, []);
+
     if (loading) {
-        return <div> Loading...</div>
+        return <div>Loading...</div>;
     }
+
+
 
     return (
         <div className='bg-[#ffffff] flex items-end justify-end gap-6 py-3 pr-6'>
