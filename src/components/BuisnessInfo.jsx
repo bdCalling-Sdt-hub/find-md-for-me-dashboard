@@ -6,14 +6,24 @@ import { BASE_URL } from '../main';
 const { TextArea } = Input;
 
 const BusinessInfo = ({ data }) => {
-    const [form] = Form.useForm();
-    
+    const [form] = Form.useForm(); 
+
     useEffect(() => {
-        // console.log('Business Data:', data); 
+     
         if (data) {
+            let formattedDirectServiceBusiness = '';
+            if (data.direct_service_business) {
+                try {
+                    const parsedData = JSON.parse(data.direct_service_business);
+                    formattedDirectServiceBusiness = parsedData.join(', ');
+                } catch (error) {
+                    console.error('Error parsing direct_service_business:', error);
+                }
+            }
+    
             form.setFieldsValue({
                 buisness_name: data?.buisness_name,
-                direct_service_business: data?.direct_service_business,
+                direct_service_business: formattedDirectServiceBusiness,
                 what_state_anicipate_service: data?.what_state_anicipate_service,
                 what_state_your_business_registered: data?.what_state_your_business_registered,
                 how_long_time_buisness: data?.how_long_time_buisness,
@@ -27,7 +37,9 @@ const BusinessInfo = ({ data }) => {
                 registeredStates: data?.registeredStates,
                 serviceStates: data?.serviceStates,
                 serviceClientsPerMonth: data?.how_many_client_patients_service_month,
-                additionalQuestions: data?.additional_question
+                additionalQuestions: data?.additional_question, 
+                client_type: data?.client_type,
+                formattedString: formattedDirectServiceBusiness,
             });
         }
     }, [data, form]);
@@ -86,8 +98,8 @@ const BusinessInfo = ({ data }) => {
 
     return (
         <div>
-            <div className='text-[32px] font-medium text-black mt-10' style={{ marginLeft: '300px' }}>Business Information</div>
-            <div className='w-full pl-20 pr-20 rounded-md bg-[#E8F6FE] mt-2 pb-10'>
+            <div className='text-[32px] font-medium text-black mt-10' >Business Information</div>
+            <div className='w-full p-10 rounded-md bg-[#E8F6FE] mt-2 pb-10'>
                 <Form
                     form={form}
                     layout="vertical"
@@ -155,7 +167,7 @@ const BusinessInfo = ({ data }) => {
 
                             <Form.Item
                                 className='text-[16px] font-medium text-[#737373] m-2'
-                                name="direct_service_business"
+                                name="formattedString"
                                 label="Who will be providing direct services at your business?"
                                 rules={[{ required: true, message: 'Please select who will be providing direct services' }]}
                             >
@@ -171,7 +183,23 @@ const BusinessInfo = ({ data }) => {
                                 <Input style={{ width: '100%', height: 48, background: '#FFFFFF', borderRadius: '10px' }} />
                             </Form.Item>
                         </Col>
-                        <Col span={12}>
+                        <Col span={12}>  
+
+                        <Form.Item
+                                className='text-[16px] font-medium text-[#737373] m-2'
+                                name="client_type"
+                                label="Client Type?"
+                                rules={[{ required: true, message: 'Please select client type' }]}
+                            >
+                                <Radio.Group>
+                                    <Space direction="vertical">
+                                        <Radio value='individual'> Individual </Radio>
+                                        <Radio value="business"> Business </Radio>
+
+                                    </Space>
+                                </Radio.Group>
+                            </Form.Item>
+                            
                             <Form.Item
                                 className='text-[16px] font-medium text-[#737373] m-2'
                                 name="businessAddress"

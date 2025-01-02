@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import  { useEffect, useState } from 'react';
 import {
-    Button, DatePicker, Form, Input, Radio, Select, Row, Col, message
+    Button, Form, Input, Radio, Row, Col, message
 } from 'antd';
 import { PiArrowLeftFill } from "react-icons/pi";
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import AppointmentInfo from '../components/Appoinment';
 import BuisnessInfo from '../components/BuisnessInfo';
 import Swal from 'sweetalert2';
@@ -14,7 +14,6 @@ import moment from 'moment';
 const PersonalInfo = () => {
     const { userId } = useParams();
     const [document, setDocument] = useState(null);
-    const [status, setStatus] = useState('all');
     const [loading, setLoading] = useState(true);
     const [btn, setBtn] = useState('personal');
     const [form] = Form.useForm();
@@ -42,7 +41,13 @@ const PersonalInfo = () => {
                 }
                 const result = await response.json();// Check the response
                 setDocument(result); // Set document directly if result contains the user data
-            } catch (error) {
+            } catch (error) {             
+                // console.error('Error fetching user document:', error); 
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Error',
+                    text: 'Failed to fetch user document',
+                });
             } finally {
                 setLoading(false);
             }
@@ -127,8 +132,8 @@ const PersonalInfo = () => {
             case 'personal':
                 return (
                     <>
-                        <div className='text-[32px] font-medium text-black mt-10' style={{ marginLeft: '300px' }}>Personal Information</div>
-                        <div className='w-full pl-20 pr-20 rounded-md bg-[#E8F6FE] mt-2 pb-10 '>
+                        <div className='text-[32px] font-medium text-black mt-10' >Personal Information</div>
+                        <div className='w-full p-10 rounded-md bg-[#E8F6FE] mt-2 pb-10 '>
 
                             <Form
                                 form={form}
