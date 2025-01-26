@@ -11,7 +11,7 @@ const ClientDocumentView = () => {
     // console.log('params id:' + userId);
     const [document, setDocument] = useState(null);
     const [loading, setLoading] = useState(true);
-    // console.log(document);   
+    console.log(document);   
 
     useEffect(() => {
         const fetchDocument = async () => {
@@ -249,8 +249,22 @@ const ClientDocumentView = () => {
 
 
                             </div>
-                        </a>
-                    </div>
+                        </a> 
+
+                        <div className='mt-5 text-[16px] leading-3 font-normal '>  5.MEMBERSHIP CONTRACT</div>
+                        <a href={`${IMAGE_URL_1}${document?.member_ship_contact}`} target='_blank'>
+                            <div className='w-[337px] bg-white rounded-[10px] p-1 mt-5' htmlFor="">
+                                <div className='  items-center  flex text-sm text-[#1DA1F2] font-medium py-2 gap-1  leading-5 pl-5'> <TbPhotoSquareRounded /> {document?.ach_fomr?.split("/").pop()} </div>
+
+                            </div>
+                        </a>  
+
+                        
+                    </div> 
+                  
+                       
+                  
+
                 </div>
                 <Form>
                     <center className='mt-16'>
